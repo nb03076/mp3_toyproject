@@ -1,0 +1,12 @@
+../Src/gpio.h:88:20:hal_gpio_toggle	24	static
+../Src/main.c:13:6:testThread	16	static
+../Src/main.c:21:5:main	40	static
+../Src/main.c:46:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Src/main.c:67:6:vApplicationMallocFailedHook	16	static,ignoring_inline_asm
+../Src/main.c:81:6:vApplicationStackOverflowHook	24	static,ignoring_inline_asm
+../Src/main.c:99:6:vApplicationIdleHook	16	static
+../Src/main.c:127:6:vMainConfigureTimerForRunTimeStats	4	static
+../Src/main.c:136:15:ulMainGetRunTimeCounterValue	4	static
+../Src/main.c:153:6:vApplicationTickHook	4	static
+../Src/main.c:162:6:vApplicationGetIdleTaskMemory	24	static
+../Src/main.c:191:6:vApplicationGetTimerTaskMemory	24	static

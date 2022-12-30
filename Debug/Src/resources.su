@@ -1,0 +1,2 @@
+../Src/gpio.h:72:20:hal_gpio_write	16	static
+../Src/resources.c:9:6:hal_resources_init_early	8	static

@@ -1,0 +1,8 @@
+/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:409:22:LL_AHB1_GRP1_EnableClock	24	static
+/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:533:22:LL_AHB1_GRP1_DisableClock	16	static
+/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:1185:22:LL_APB1_GRP1_EnableClock	24	static
+/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:1337:22:LL_APB1_GRP1_DisableClock	16	static
+/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:1704:22:LL_APB2_GRP1_EnableClock	24	static
+/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:1832:22:LL_APB2_GRP1_DisableClock	16	static
+../Src/clock.c:3:6:hal_clock_init_early	8	static
+../Src/clock.c:21:6:hal_clock_deinit_early	8	static

@@ -1,0 +1,15 @@
+
+#ifndef CORE_BASE_H_
+#define CORE_BASE_H_
+
+/* errno */
+typedef enum {
+	HalStatusOK = 0,
+	HalStatusError = -1,
+	HalStatusErrorTimeout = -2,
+	HalStatusErrorResrouce = -3
+}HalStatus;
+
+#define IS_IRQ_MODE() (__get_IPSR() != 0U)
+
+#endif /* CORE_BASE_H_ */
