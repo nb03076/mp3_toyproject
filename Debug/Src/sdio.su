@@ -1,5 +1,5 @@
-../Src/sdio.c:7:6:sdio_init	4	static
-../Src/sdio.c:19:6:HAL_SD_MspInit	48	static
-../Src/sdio.c:85:6:HAL_SD_MspDeInit	16	static
-../Src/sdio.c:112:6:DMA2_Stream3_IRQHandler	8	static
-../Src/sdio.c:117:6:SDIO_IRQHandler	8	static
+../Src/sdio.c:8:6:sdio_init	4	static
+../Src/sdio.c:20:6:HAL_SD_MspInit	56	static
+../Src/sdio.c:94:6:HAL_SD_MspDeInit	16	static
+../Src/sdio.c:121:6:DMA2_Stream3_IRQHandler	8	static
+../Src/sdio.c:126:6:SDIO_IRQHandler	8	static

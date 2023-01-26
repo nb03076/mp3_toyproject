@@ -12,7 +12,6 @@ typedef enum {
 	UartIdUSART1
 }UartId;
 
-
 void hal_uart_init(UartId ch, uint32_t baud);
 void hal_uart_set_baud(UartId ch, uint32_t baud);
 void hal_uart_deinit(UartId ch);

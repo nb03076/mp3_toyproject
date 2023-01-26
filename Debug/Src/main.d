@@ -1,620 +1,161 @@
-Src/main.o: ../Src/main.c \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h \
- /home/kang/stm_workspace/ll_mp3_project/conf/FreeRTOSConfig.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS/SEGGER_SYSVIEW_FreeRTOS.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/Global.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW_ConfDefaults.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_SYSVIEW_Conf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_RTT_Conf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/projdefs.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portable.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/deprecated_definitions.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portmacro.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/mpu_wrappers.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/list.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_log.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../lv_conf_kconfig.h \
- /home/kang/stm_workspace/ll_mp3_project/conf/lv_conf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_types.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_timer.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../hal/lv_hal_tick.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../hal/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_math.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_mem.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_async.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_anim_timeline.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_anim.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_printf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal_disp.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_style.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/lv_font.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/lv_symbol_def.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/../misc/lv_area.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/../misc/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_color.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_assert.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_log.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_mem.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_math.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_types.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_area.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_anim.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_txt.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_printf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_bidi.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_style_gen.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_txt.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_img_decoder.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_img_buf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_color.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_area.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_fs.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_types.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_img_cache.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_rect.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/lv_draw_sw_gradient.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/lv_draw_sw_dither.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../core/lv_obj_pos.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../core/../misc/lv_area.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../misc/lv_color.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../misc/lv_style.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_label.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_bidi.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_img.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_line.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_triangle.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_arc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_mask.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_math.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_transform.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_layer.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_color.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_area.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_ll.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_timer.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal_indev.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal_tick.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_style.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_types.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_area.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_color.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_assert.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../hal/lv_hal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_tree.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_pos.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_scroll.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_anim.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_style.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_bidi.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_style_gen.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_draw.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../draw/lv_draw.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_class.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_event.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_group.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_ll.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_group.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_indev.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../hal/lv_hal_indev.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_refr.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_disp.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_theme.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_theme.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font_loader.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font_fmt_txt.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/lv_animimg.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/lv_img.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../misc/lv_fs.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../draw/lv_draw.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/arc/lv_arc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/arc/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/arc/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/lv_bar.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../../misc/lv_anim.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/lv_label.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../font/lv_font.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../font/lv_symbol_def.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../misc/lv_txt.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../draw/lv_draw.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btn/lv_btn.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btn/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btn/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btnmatrix/lv_btnmatrix.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btnmatrix/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btnmatrix/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/lv_calendar.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/../btnmatrix/lv_btnmatrix.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/lv_calendar_header_arrow.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/lv_canvas.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/../img/lv_img.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/../../draw/lv_draw_img.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/chart/lv_chart.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/checkbox/lv_checkbox.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/checkbox/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/checkbox/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/colorwheel/lv_colorwheel.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/dropdown/lv_dropdown.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/dropdown/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/dropdown/../label/lv_label.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/img/lv_img.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/imgbtn/lv_imgbtn.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/imgbtn/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/keyboard/lv_keyboard.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/keyboard/../btnmatrix/lv_btnmatrix.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/label/lv_label.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/led/lv_led.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/led/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/line/lv_line.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/line/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/list/lv_list.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/list/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/menu/lv_menu.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/menu/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/meter/lv_meter.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/meter/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/msgbox/lv_msgbox.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/msgbox/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/roller/lv_roller.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/roller/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/roller/../label/lv_label.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/slider/lv_slider.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/slider/../bar/lv_bar.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/span/lv_span.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/span/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinbox/lv_spinbox.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinbox/../textarea/lv_textarea.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinbox/../textarea/../label/lv_label.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinner/lv_spinner.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinner/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/switch/lv_switch.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/switch/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/switch/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/table/lv_table.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/table/../label/lv_label.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tabview/lv_tabview.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tabview/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/textarea/lv_textarea.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tileview/lv_tileview.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tileview/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/win/lv_win.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/win/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/snapshot/lv_snapshot.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/snapshot/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/monkey/lv_monkey.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/monkey/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/gridnav/lv_gridnav.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/gridnav/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/fragment/lv_fragment.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/fragment/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/imgfont/lv_imgfont.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/imgfont/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/msg/lv_msg.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/msg/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/ime/lv_ime_pinyin.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/ime/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/file_explorer/lv_file_explorer.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/file_explorer/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/bmp/lv_bmp.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/bmp/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/fsdrv/lv_fsdrv.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/fsdrv/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/png/lv_png.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/png/../../lv_conf_internal.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/gif/lv_gif.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/gif/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/qrcode/lv_qrcode.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/qrcode/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/sjpg/lv_sjpg.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/freetype/lv_freetype.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/freetype/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/rlottie/lv_rlottie.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/rlottie/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/ffmpeg/lv_ffmpeg.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/ffmpeg/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/tiny_ttf/../../../lvgl.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/flex/lv_flex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/flex/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/grid/lv_grid.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/grid/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/draw/lv_draw.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/lv_themes.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/default/lv_theme_default.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/default/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/default/../../core/lv_theme.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/mono/lv_theme_mono.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/mono/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/basic/lv_theme_basic.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/basic/../../core/lv_obj.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/basic/../../core/lv_theme.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/lv_api_map.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/../lvgl.h \
- ../Src/clock.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/core_cm4.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_version.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_compiler.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_gcc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/mpu_armv7.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h \
+ /home/kang/space/ll_mp3_project/conf/FreeRTOSConfig.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS/SEGGER_SYSVIEW_FreeRTOS.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/Global.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW_ConfDefaults.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_SYSVIEW_Conf.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_RTT_Conf.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/projdefs.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portable.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/deprecated_definitions.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portmacro.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/mpu_wrappers.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/list.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
+ /home/kang/space/ll_mp3_project/Src/core/base.h \
+ /home/kang/space/ll_mp3_project/Src/delay.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/core_cm4.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_version.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_compiler.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_gcc.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/mpu_armv7.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ /home/kang/space/ll_mp3_project/conf/stm32f4xx_hal_conf.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8g2.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8x8.h \
+ /home/kang/space/ll_mp3_project/Src/Drivers/u8g2_stm.h ../Src/clock.h \
  ../Src/resources.h ../Src/gpio.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/core/core.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- ../Src/misc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
- /home/kang/stm_workspace/ll_mp3_project/conf/stm32f4xx_hal_conf.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_rcc.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_utils.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
  ../Src/i2c.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_i2c.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_i2c.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
  ../Src/spi.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h \
  ../Src/uart.h \
- /home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h:
-/home/kang/stm_workspace/ll_mp3_project/conf/FreeRTOSConfig.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS/SEGGER_SYSVIEW_FreeRTOS.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/Global.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW_ConfDefaults.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_SYSVIEW_Conf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_RTT_Conf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/projdefs.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portable.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/deprecated_definitions.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portmacro.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/mpu_wrappers.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/list.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_log.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../lv_conf_kconfig.h:
-/home/kang/stm_workspace/ll_mp3_project/conf/lv_conf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_types.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_timer.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../hal/lv_hal_tick.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/../hal/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_math.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_mem.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_async.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_anim_timeline.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_anim.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/misc/lv_printf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal_disp.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_style.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/lv_font.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/lv_symbol_def.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/../misc/lv_area.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../font/../misc/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_color.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_assert.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_log.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_mem.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_math.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_types.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_area.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_anim.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_txt.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_printf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_bidi.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_style_gen.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_txt.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_img_decoder.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_img_buf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_color.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_area.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_fs.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_types.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_img_cache.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_rect.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/lv_draw_sw_gradient.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/lv_draw_sw_dither.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../core/lv_obj_pos.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../core/../misc/lv_area.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../misc/lv_color.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/sw/../../misc/lv_style.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_label.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_bidi.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_img.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_line.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_triangle.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_arc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_mask.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/../misc/lv_math.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_transform.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../draw/lv_draw_layer.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_color.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_area.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_ll.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../misc/lv_timer.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal_indev.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/hal/lv_hal_tick.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_style.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_types.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_area.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_color.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_assert.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../hal/lv_hal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_tree.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_pos.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_scroll.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_anim.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_style.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_bidi.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_style_gen.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_draw.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../draw/lv_draw.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj_class.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_event.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_group.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../misc/lv_ll.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_group.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_indev.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../hal/lv_hal_indev.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_refr.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_disp.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_theme.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/core/lv_theme.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font_loader.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font_fmt_txt.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/font/lv_font.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/lv_animimg.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/lv_img.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../misc/lv_fs.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/animimg/../img/../../draw/lv_draw.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/arc/lv_arc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/arc/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/arc/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/lv_bar.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../../misc/lv_anim.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/lv_label.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../font/lv_font.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../font/lv_symbol_def.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../misc/lv_txt.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/bar/../label/../../draw/lv_draw.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btn/lv_btn.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btn/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btn/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btnmatrix/lv_btnmatrix.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btnmatrix/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/btnmatrix/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/lv_calendar.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/../btnmatrix/lv_btnmatrix.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/lv_calendar_header_arrow.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/lv_canvas.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/../img/lv_img.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/canvas/../../draw/lv_draw_img.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/chart/lv_chart.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/checkbox/lv_checkbox.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/checkbox/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/checkbox/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/colorwheel/lv_colorwheel.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/dropdown/lv_dropdown.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/dropdown/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/dropdown/../label/lv_label.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/img/lv_img.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/imgbtn/lv_imgbtn.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/imgbtn/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/keyboard/lv_keyboard.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/keyboard/../btnmatrix/lv_btnmatrix.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/label/lv_label.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/led/lv_led.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/led/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/line/lv_line.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/line/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/list/lv_list.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/list/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/menu/lv_menu.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/menu/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/meter/lv_meter.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/meter/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/msgbox/lv_msgbox.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/msgbox/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/roller/lv_roller.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/roller/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/roller/../label/lv_label.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/slider/lv_slider.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/slider/../bar/lv_bar.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/span/lv_span.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/span/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinbox/lv_spinbox.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinbox/../textarea/lv_textarea.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinbox/../textarea/../label/lv_label.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinner/lv_spinner.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/spinner/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/switch/lv_switch.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/switch/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/switch/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/table/lv_table.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/table/../label/lv_label.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tabview/lv_tabview.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tabview/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/textarea/lv_textarea.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tileview/lv_tileview.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/tileview/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/win/lv_win.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/widgets/win/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/snapshot/lv_snapshot.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/snapshot/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/monkey/lv_monkey.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/monkey/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/gridnav/lv_gridnav.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/gridnav/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/fragment/lv_fragment.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/fragment/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/imgfont/lv_imgfont.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/imgfont/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/msg/lv_msg.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/msg/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/ime/lv_ime_pinyin.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/ime/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/file_explorer/lv_file_explorer.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/others/file_explorer/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/bmp/lv_bmp.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/bmp/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/fsdrv/lv_fsdrv.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/fsdrv/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/png/lv_png.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/png/../../lv_conf_internal.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/gif/lv_gif.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/gif/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/qrcode/lv_qrcode.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/qrcode/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/sjpg/lv_sjpg.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/freetype/lv_freetype.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/freetype/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/rlottie/lv_rlottie.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/rlottie/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/ffmpeg/lv_ffmpeg.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/ffmpeg/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/libs/tiny_ttf/../../../lvgl.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/flex/lv_flex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/flex/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/grid/lv_grid.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/layouts/grid/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/draw/lv_draw.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/lv_themes.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/default/lv_theme_default.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/default/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/default/../../core/lv_theme.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/mono/lv_theme_mono.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/mono/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/basic/lv_theme_basic.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/basic/../../core/lv_obj.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/themes/basic/../../core/lv_theme.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/lv_api_map.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/lvgl/src/../lvgl.h:
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h \
+ ../Src/sdio.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h \
+ /home/kang/space/ll_mp3_project/conf/ffconf.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff_gen_drv.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h \
+ ../Src/cli.h ../Src/delay.h
+/home/kang/space/ll_mp3_project/Src/core/core.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h:
+/home/kang/space/ll_mp3_project/conf/FreeRTOSConfig.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS/SEGGER_SYSVIEW_FreeRTOS.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/Global.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/SEGGER/SEGGER_SYSVIEW_ConfDefaults.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_SYSVIEW_Conf.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/SEGGER/SystemView/Config/SEGGER_RTT_Conf.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/projdefs.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portable.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/deprecated_definitions.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/portmacro.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/mpu_wrappers.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/list.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
+/home/kang/space/ll_mp3_project/Src/core/base.h:
+/home/kang/space/ll_mp3_project/Src/delay.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/core_cm4.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_version.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_compiler.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_gcc.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/mpu_armv7.h:
+/home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
+/home/kang/space/ll_mp3_project/conf/stm32f4xx_hal_conf.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8g2.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8x8.h:
+/home/kang/space/ll_mp3_project/Src/Drivers/u8g2_stm.h:
 ../Src/clock.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/core_cm4.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_version.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_compiler.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/cmsis_gcc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Include/mpu_armv7.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h:
 ../Src/resources.h:
 ../Src/gpio.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/core/core.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-../Src/misc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
-/home/kang/stm_workspace/ll_mp3_project/conf/stm32f4xx_hal_conf.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_rcc.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_utils.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h:
 ../Src/i2c.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_i2c.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_i2c.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:
 ../Src/spi.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h:
 ../Src/uart.h:
-/home/kang/stm_workspace/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
+../Src/sdio.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h:
+/home/kang/space/ll_mp3_project/conf/ffconf.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff_gen_drv.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:
+../Src/cli.h:
+../Src/delay.h:

@@ -62,6 +62,10 @@ typedef enum{
 
 typedef enum{
 	GpioAltFnUART1 = LL_GPIO_AF_7,
+	GpioAltFnI2C1 = LL_GPIO_AF_4,
+	GpioAltFnI2C3 = LL_GPIO_AF_4,
+	GpioAltFnSpi2 = LL_GPIO_AF_5,
+	GpioAltFnSpi4 = LL_GPIO_AF_5,
 	GpioAltFnUnused = 16
 }GpioAltFn;
 

@@ -1,0 +1,8 @@
+../Src/hookfunction.c:16:6:vApplicationMallocFailedHook	16	static,ignoring_inline_asm
+../Src/hookfunction.c:30:6:vApplicationStackOverflowHook	24	static,ignoring_inline_asm
+../Src/hookfunction.c:48:6:vApplicationIdleHook	16	static
+../Src/hookfunction.c:76:6:vMainConfigureTimerForRunTimeStats	4	static
+../Src/hookfunction.c:85:15:ulMainGetRunTimeCounterValue	4	static
+../Src/hookfunction.c:102:6:vApplicationTickHook	4	static
+../Src/hookfunction.c:111:6:vApplicationGetIdleTaskMemory	24	static
+../Src/hookfunction.c:140:6:vApplicationGetTimerTaskMemory	24	static

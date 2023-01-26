@@ -1,4 +1,5 @@
 #include "sdio.h"
+#include "core.h"
 
 SD_HandleTypeDef hsd;
 DMA_HandleTypeDef hdma_sdio;
@@ -13,11 +14,19 @@ void sdio_init(void)
   hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
   hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
   /* clock hz = 45 / (2 + ClockDiv) = 9mHz */
-  hsd.Init.ClockDiv = 3;
+  hsd.Init.ClockDiv = 0;
 }
 
 void HAL_SD_MspInit(SD_HandleTypeDef* sdHandle)
 {
+	  /* DMA controller clock enable */
+	  __HAL_RCC_DMA2_CLK_ENABLE();
+
+	  /* DMA interrupt init */
+	  /* DMA2_Stream3_IRQn interrupt configuration */
+	  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+	  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+
 
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(sdHandle->Instance==SDIO)
@@ -63,7 +72,7 @@ void HAL_SD_MspInit(SD_HandleTypeDef* sdHandle)
     hdma_sdio.Init.PeriphBurst = DMA_PBURST_INC4;
     if (HAL_DMA_Init(&hdma_sdio) != HAL_OK)
     {
-      Error_Handler();
+      ErrorHandler();
     }
 
     /* Several peripheral DMA handle pointers point to the same DMA handle.

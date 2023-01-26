@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "ltdc.h"
+#include "core.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -57,7 +58,7 @@ void ltdc_init(void)
   hltdc.Init.Backcolor.Red = 0;
   if (HAL_LTDC_Init(&hltdc) != HAL_OK)
   {
-    Error_Handler();
+    ErrorHandler();
   }
   pLayerCfg.WindowX0 = 0;
   pLayerCfg.WindowX1 = 240;
@@ -76,7 +77,7 @@ void ltdc_init(void)
   pLayerCfg.Backcolor.Red = 0;
   if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, 0) != HAL_OK)
   {
-    Error_Handler();
+    ErrorHandler();
   }
   /* USER CODE BEGIN LTDC_Init 2 */
 

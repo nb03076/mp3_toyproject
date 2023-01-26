@@ -1,0 +1,13 @@
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:2024:22:LL_USART_EnableIT_IDLE	40	static,ignoring_inline_asm
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:2316:22:LL_USART_EnableDMAReq_RX	40	static,ignoring_inline_asm
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:494:22:LL_DMA_EnableStream	16	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:968:22:LL_DMA_SetDataLength	24	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:1436:22:LL_DMA_SetMemoryAddress	24	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:1459:22:LL_DMA_SetPeriphAddress	24	static
+../Src/cli.c:18:6:hal_cli_menuprint	4	static
+../Src/cli.c:23:13:print_boottime	24	static
+../Src/cli.c:35:6:hal_cli_bufferprint	4	static
+../Src/cli.c:39:6:hal_cli_printf	16	static
+../Src/cli.c:59:6:hal_cli_init	8	static
+../Src/cli.c:78:6:hal_cli_putbufbyte	16	static
+../Src/cli.c:84:9:hal_cli_getbufbyte	16	static

@@ -1,6 +1,6 @@
 #include "gpio.h"
 
-#define GET_SYSCFG_EXTI_PORT(gpio)					\
+#define GET_SYSCFG_EXTI_PORT(gpio)						\
 	(((gpio) == (GPIOA)) ? LL_SYSCFG_EXTI_PORTA : 	\
 	 ((gpio) == (GPIOB)) ? LL_SYSCFG_EXTI_PORTB :	\
 	 ((gpio) == (GPIOC)) ? LL_SYSCFG_EXTI_PORTC :	\
@@ -10,7 +10,7 @@
 	 ((gpio) == (GPIOG)) ? LL_SYSCFG_EXTI_PORTG :	\
 			 	 	 	   LL_SYSCFG_EXTI_PORTH)
 
-#define GPIO_PIN_MAP(pin, prefix)				\
+#define GPIO_PIN_MAP(pin, prefix)					\
 	(((pin) == (LL_GPIO_PIN_0))  ? prefix##0  : \
 	 ((pin) == (LL_GPIO_PIN_1))  ? prefix##1  : \
 	 ((pin) == (LL_GPIO_PIN_2))  ? prefix##2  : \
@@ -26,7 +26,7 @@
 	 ((pin) == (LL_GPIO_PIN_12)) ? prefix##12 : \
 	 ((pin) == (LL_GPIO_PIN_13)) ? prefix##13 : \
 	 ((pin) == (LL_GPIO_PIN_14)) ? prefix##14 : \
-			 	 	 	 	 	   prefix##15)
+			 	 	 	 	 	   	   	   prefix##15)
 
 
 #define GET_SYSCFG_EXTI_LINE(pin) GPIO_PIN_MAP(pin, LL_SYSCFG_EXTI_LINE)
@@ -142,11 +142,14 @@ void hal_gpio_init_alt(
 		case GpioModeAltFunctionPushPull:
 			LL_GPIO_SetPinMode(gpio->port, gpio->pin, LL_GPIO_MODE_ALTERNATE);
 			LL_GPIO_SetPinOutputType(gpio->port, gpio->pin, LL_GPIO_OUTPUT_PUSHPULL);
+			break;
 		case GpioModeAltFunctionOpenDrain:
 			LL_GPIO_SetPinMode(gpio->port, gpio->pin, LL_GPIO_MODE_ALTERNATE);
 			LL_GPIO_SetPinOutputType(gpio->port, gpio->pin, LL_GPIO_OUTPUT_OPENDRAIN);
+			break;
 		case GpioModeAnalog:
 			LL_GPIO_SetPinMode(gpio->port, gpio->pin, LL_GPIO_MODE_ANALOG);
+			break;
 		default:
 			break;
 		}

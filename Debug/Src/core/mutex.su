@@ -1,3 +1,0 @@
-../Src/core/mutex.c:3:20:mutex_alloc	16	static
-../Src/core/mutex.c:15:11:mutex_lock	24	static
-../Src/core/mutex.c:32:11:mutex_unlock	24	static

@@ -1,6 +1,391 @@
 #include "i2c.h"
+#include "core.h"
+#include "stm32f4xx_ll_i2c.h"
+#include "stm32f4xx_ll_dma.h"
+#include "stm32f4xx_ll_bus.h"
+#include "stm32f4xx_ll_gpio.h"
+
+#include "resources.h"
+#include "delay.h"
+#include "cli.h"
+
+static void i2c1_init(void);
+static void i2c3_init(void);
+
+i2cdrv_t i2c1drv;
+i2cdrv_t i2c3drv;
+
+#define I2C_MUTEX_TIMEOUT 1000 /* 1sec */
+#define I2C_POLLING_TIMEOUT 1000000 /* 1sec */
 
 
+void i2c_init(I2cID i2c_id)
+{
+	taskENTER_CRITICAL();
+
+	switch(i2c_id) {
+	case I2cId1:
+		i2c1_init();
+		i2c1drv.i2c = I2C1;
+		i2c1drv.mutex = xSemaphoreCreateMutex();
+		hal_cli_printf("i2c1 init");
+		break;
+
+	case I2cId3:
+		i2c3_init();
+		i2c3drv.i2c = I2C3;
+		i2c3drv.mutex = xSemaphoreCreateMutex();
+		hal_cli_printf("i2c3 init");
+		break;
+
+	default:
+		hal_cli_printf("i2c id not exist");
+		break;
+	}
+
+	taskEXIT_CRITICAL();
+}
+
+bool hal_i2c_transfer(i2cdrv_t* drv, uint8_t addr, uint32_t regaddr, uint8_t* buf, uint32_t size, uint32_t timeout)
+{
+	coretex_timer timer;
+	uint32_t index = 0;
+
+	timeout *= 1000;
+
+	if(xSemaphoreTake(drv->mutex, I2C_MUTEX_TIMEOUT) != pdPASS) {
+		hal_cli_printf("i2c semaphore take timeout");
+		return false;
+	}
+
+	timer = hal_get_delay_timer(timeout);
+
+	while(LL_I2C_IsActiveFlag_BUSY(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			hal_cli_printf("i2c busy flag timeout");
+			return false;
+		}
+	}
+
+	LL_I2C_GenerateStartCondition(drv->i2c);
+	while(!LL_I2C_IsActiveFlag_SB(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			LL_I2C_GenerateStopCondition(drv->i2c);
+			hal_cli_printf("i2c start bit flag timeout");
+			return false;
+		}
+	}
+
+	LL_I2C_TransmitData8(drv->i2c, addr);
+	while(!LL_I2C_IsActiveFlag_ADDR(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			LL_I2C_GenerateStopCondition(drv->i2c);
+			hal_cli_printf("i2c address transmit timeout");
+			return false;
+		}
+	}
+	LL_I2C_ClearFlag_ADDR(drv->i2c);
+
+	/* register address transfer */
+	while(!LL_I2C_IsActiveFlag_TXE(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			LL_I2C_GenerateStopCondition(drv->i2c);
+			hal_cli_printf("i2c register address transmit timeout");
+			return false;
+		}
+	}
+	LL_I2C_TransmitData8(drv->i2c, regaddr);
+
+
+	while(index < size) {
+		while(!LL_I2C_IsActiveFlag_TXE(drv->i2c)) {
+			if(hal_delay_timer_is_expired(&timer)) {
+				xSemaphoreGive(drv->mutex);
+				LL_I2C_GenerateStopCondition(drv->i2c);
+				hal_cli_printf("i2c TXE flag timeout");
+				return false;
+			}
+		}
+
+		LL_I2C_TransmitData8(drv->i2c, buf[index++]);
+	}
+
+
+	while(!LL_I2C_IsActiveFlag_TXE(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			LL_I2C_GenerateStopCondition(drv->i2c);
+			hal_cli_printf("i2c TXE flag timeout");
+			return false;
+		}
+	}
+
+	while(!LL_I2C_IsActiveFlag_BTF(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			LL_I2C_GenerateStopCondition(drv->i2c);
+			hal_cli_printf("i2c BTF flag timeout");
+			return false;
+		}
+	}
+
+	LL_I2C_GenerateStopCondition(drv->i2c);
+	xSemaphoreGive(drv->mutex);
+
+	return true;
+}
+
+
+bool hal_i2c_receive(i2cdrv_t* drv, uint8_t addr, uint32_t regaddr, uint8_t* buf, uint32_t size, uint32_t timeout)
+{
+	coretex_timer timer;
+	uint32_t index = 0;
+
+	if(hal_i2c_transfer(drv,addr,regaddr,NULL,0,timeout) == false) {
+		hal_cli_printf("i2c transfer error");
+		return false;
+	}
+
+	if(xSemaphoreTake(drv->mutex, I2C_MUTEX_TIMEOUT) != pdPASS) {
+		hal_cli_printf("i2c semaphore take timeout");
+		return false;
+	}
+
+	timer = hal_get_delay_timer(I2C_POLLING_TIMEOUT);
+
+
+	while(LL_I2C_IsActiveFlag_BUSY(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			hal_cli_printf("i2c busy flag timeout");
+			return false;
+		}
+	}
+
+	if(size == 1) {
+		LL_I2C_AcknowledgeNextData(drv->i2c, LL_I2C_NACK);
+	} else {
+		LL_I2C_AcknowledgeNextData(drv->i2c, LL_I2C_ACK);
+	}
+
+	LL_I2C_GenerateStartCondition(drv->i2c);
+	while(!LL_I2C_IsActiveFlag_SB(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			LL_I2C_GenerateStopCondition(drv->i2c);
+			hal_cli_printf("i2c start bit flag timeout");
+			return false;
+		}
+	}
+
+	LL_I2C_TransmitData8(drv->i2c, addr | 0x01);
+	while(!LL_I2C_IsActiveFlag_ADDR(drv->i2c)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			xSemaphoreGive(drv->mutex);
+			LL_I2C_GenerateStopCondition(drv->i2c);
+			hal_cli_printf("i2c address transmit timeout");
+			return false;
+		}
+	}
+	LL_I2C_ClearFlag_ADDR(drv->i2c);
+
+	while(index < size) {
+		while(!LL_I2C_IsActiveFlag_RXNE(drv->i2c)) {
+			if(hal_delay_timer_is_expired(&timer)) {
+				xSemaphoreGive(drv->mutex);
+				LL_I2C_GenerateStopCondition(drv->i2c);
+				hal_cli_printf("i2c RXNE flag timeout");
+				return false;
+			}
+		}
+		buf[index++] = LL_I2C_ReceiveData8(drv->i2c);
+
+		if(index == size - 1)
+			LL_I2C_AcknowledgeNextData(drv->i2c, LL_I2C_NACK);
+	}
+
+	LL_I2C_GenerateStopCondition(drv->i2c);
+
+	xSemaphoreGive(drv->mutex);
+
+	return true;
+}
+
+uint8_t hal_i2c_receive_byte(i2cdrv_t* drv, uint8_t addr, uint32_t regaddr, uint32_t timeout)
+{
+	uint8_t byte = 0;
+	hal_i2c_receive(drv, addr, regaddr, &byte, 1, timeout);
+
+	return byte;
+}
+
+static void i2c1_init(void)
+{
+	LL_I2C_InitTypeDef I2C_InitStruct = {0};
+
+	hal_gpio_init_alt(
+		&gpio_i2c1_scl,
+		GpioModeAltFunctionOpenDrain,
+		GpioPullNo,
+		GpioSpeedFreqVeryHigh,
+		GpioAltFnI2C1);
+
+	hal_gpio_init_alt(
+		&gpio_i2c1_sda,
+		GpioModeAltFunctionOpenDrain,
+		GpioPullNo,
+		GpioSpeedFreqVeryHigh,
+		GpioAltFnI2C1);
+
+  /* I2C1_TX Init */
+  LL_DMA_SetChannelSelection(DMA1, DMA_I2C1_TX_STREAM, DMA_I2C1_TX_CHANNEL);
+  LL_DMA_SetDataTransferDirection(DMA1, DMA_I2C1_TX_STREAM, LL_DMA_DIRECTION_MEMORY_TO_PERIPH);
+  LL_DMA_SetStreamPriorityLevel(DMA1, DMA_I2C1_TX_STREAM, LL_DMA_PRIORITY_LOW);
+  LL_DMA_SetMode(DMA1, DMA_I2C1_TX_STREAM, LL_DMA_MODE_NORMAL);
+  LL_DMA_SetPeriphIncMode(DMA1, DMA_I2C1_TX_STREAM, LL_DMA_PERIPH_NOINCREMENT);
+  LL_DMA_SetMemoryIncMode(DMA1, DMA_I2C1_TX_STREAM, LL_DMA_MEMORY_INCREMENT);
+  LL_DMA_SetPeriphSize(DMA1, DMA_I2C1_TX_STREAM, LL_DMA_PDATAALIGN_BYTE);
+  LL_DMA_SetMemorySize(DMA1, DMA_I2C1_TX_STREAM, LL_DMA_MDATAALIGN_BYTE);
+  LL_DMA_DisableFifoMode(DMA1, DMA_I2C1_TX_STREAM);
+
+  /* I2C1_RX Init */
+  LL_DMA_SetChannelSelection(DMA1, DMA_I2C1_RX_STREAM, DMA_I2C1_RX_CHANNEL);
+  LL_DMA_SetDataTransferDirection(DMA1, DMA_I2C1_RX_STREAM, LL_DMA_DIRECTION_PERIPH_TO_MEMORY);
+  LL_DMA_SetStreamPriorityLevel(DMA1, DMA_I2C1_RX_STREAM, LL_DMA_PRIORITY_LOW);
+  LL_DMA_SetMode(DMA1, DMA_I2C1_RX_STREAM, LL_DMA_MODE_NORMAL);
+  LL_DMA_SetPeriphIncMode(DMA1, DMA_I2C1_RX_STREAM, LL_DMA_PERIPH_NOINCREMENT);
+  LL_DMA_SetMemoryIncMode(DMA1, DMA_I2C1_RX_STREAM, LL_DMA_MEMORY_INCREMENT);
+  LL_DMA_SetPeriphSize(DMA1, DMA_I2C1_RX_STREAM, LL_DMA_PDATAALIGN_BYTE);
+  LL_DMA_SetMemorySize(DMA1, DMA_I2C1_RX_STREAM, LL_DMA_MDATAALIGN_BYTE);
+  LL_DMA_DisableFifoMode(DMA1, DMA_I2C1_RX_STREAM);
+
+  /* I2C1 interrupt Init */
+  NVIC_SetPriority(I2C1_EV_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+  NVIC_EnableIRQ(I2C1_EV_IRQn);
+  NVIC_SetPriority(I2C1_ER_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+  NVIC_EnableIRQ(I2C1_ER_IRQn);
+
+  /* I2C Initialization */
+  LL_I2C_DisableOwnAddress2(I2C1);
+  LL_I2C_DisableGeneralCall(I2C1);
+  LL_I2C_EnableClockStretching(I2C1);
+  I2C_InitStruct.PeripheralMode = LL_I2C_MODE_I2C;
+  I2C_InitStruct.ClockSpeed = 100000;
+  I2C_InitStruct.DutyCycle = LL_I2C_DUTYCYCLE_2;
+  I2C_InitStruct.AnalogFilter = LL_I2C_ANALOGFILTER_ENABLE;
+  I2C_InitStruct.DigitalFilter = 0;
+  I2C_InitStruct.OwnAddress1 = 0;
+  I2C_InitStruct.TypeAcknowledge = LL_I2C_ACK;
+  I2C_InitStruct.OwnAddrSize = LL_I2C_OWNADDRESS1_7BIT;
+  LL_I2C_Init(I2C1, &I2C_InitStruct);
+  LL_I2C_SetOwnAddress2(I2C1, 0);
+}
+
+static void i2c3_init(void)
+{
+  LL_I2C_InitTypeDef I2C_InitStruct = {0};
+
+	hal_gpio_init_alt(
+		&gpio_i2c3_scl,
+		GpioModeAltFunctionOpenDrain,
+		GpioPullNo,
+		GpioSpeedFreqVeryHigh,
+		GpioAltFnI2C3);
+
+	hal_gpio_init_alt(
+		&gpio_i2c3_sda,
+		GpioModeAltFunctionOpenDrain,
+		GpioPullNo,
+		GpioSpeedFreqVeryHigh,
+		GpioAltFnI2C3);
+
+  /* I2C3 interrupt Init */
+  NVIC_SetPriority(I2C3_EV_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+  NVIC_EnableIRQ(I2C3_EV_IRQn);
+  NVIC_SetPriority(I2C3_ER_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+  NVIC_EnableIRQ(I2C3_ER_IRQn);
+
+  /** I2C Initialization
+  */
+  LL_I2C_DisableOwnAddress2(I2C3);
+  LL_I2C_DisableGeneralCall(I2C3);
+  LL_I2C_EnableClockStretching(I2C3);
+  I2C_InitStruct.PeripheralMode = LL_I2C_MODE_I2C;
+  I2C_InitStruct.ClockSpeed = 100000;
+  I2C_InitStruct.DutyCycle = LL_I2C_DUTYCYCLE_2;
+  I2C_InitStruct.AnalogFilter = LL_I2C_ANALOGFILTER_ENABLE;
+  I2C_InitStruct.DigitalFilter = 0;
+  I2C_InitStruct.OwnAddress1 = 0;
+  I2C_InitStruct.TypeAcknowledge = LL_I2C_ACK;
+  I2C_InitStruct.OwnAddrSize = LL_I2C_OWNADDRESS1_7BIT;
+  LL_I2C_Init(I2C3, &I2C_InitStruct);
+  LL_I2C_SetOwnAddress2(I2C3, 0);
+}
+
+
+
+void DMA1_Stream0_IRQHandler(void)
+{
+
+}
+
+void DMA1_Stream6_IRQHandler(void)
+{
+
+}
+
+
+void I2C1_EV_IRQHandler(void)
+{
+
+}
+
+
+void I2C1_ER_IRQHandler(void)
+{
+
+}
+
+
+void I2C3_EV_IRQHandler(void)
+{
+
+}
+
+
+void I2C3_ER_IRQHandler(void)
+{
+
+}
+
+
+/*
+ *  legacy version
+ */
+
+#if 0
+void hal_i2c_init(i2c_drv* drv)
+{
+	i2c3_pin_conf();
+
+    i2c3_dma_init();
+
+    LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C3);
+    i2c3_config();
+
+
+	/* remove busy flag glitch */
+	LL_I2C_EnableReset(drv->i2c);
+	HAL_Delay(2);
+	LL_I2C_DisableReset(drv->i2c);
+
+	drv->mutex = xSemaphoreCreateMutex();
+}
+#endif
 
 #if 0
 
