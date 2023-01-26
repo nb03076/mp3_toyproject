@@ -1,9 +1,19 @@
 #include "vs1053.h"
+#include "gpio.h"
+#include "resources.h"
+#include "spi.h"
+#include <stdbool.h>
 #include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_utils.h"
+
+
+#define VS1053_SPI_TIMEOUT 10 * 1000
 
 /* Commands */
 #define VS1053_WRITE_CMD	0x02;
 #define VS1053_READ_CMD		0x03;
+
+spidrv_t* vs1053spidrv = &spi4drv;
 
 /* Registers */
 const uint8_t VS1053_REG_BASE		= 0x00;
@@ -26,12 +36,12 @@ const uint8_t VS1053_REG_AICTRL3 	= 0x0F;
 
 /* Pin control */
 
-#define XCS_HIGH	LL_GPIO_SetOutputPin()
-#define XCS_LOW		HAL_GPIO_WritePin(VS1053_XCS_PORT, VS1053_XCS_PIN, GPIO_PIN_RESET)
-#define XDCS_HIGH	HAL_GPIO_WritePin(VS1053_XDCS_PORT, VS1053_XDCS_PIN, GPIO_PIN_SET)
-#define XDCS_LOW	HAL_GPIO_WritePin(VS1053_XDCS_PORT, VS1053_XDCS_PIN, GPIO_PIN_RESET)
-#define XRST_HIGH	HAL_GPIO_WritePin(VS1053_XRST_PORT, VS1053_XRST_PIN, GPIO_PIN_SET)
-#define XRST_LOW	HAL_GPIO_WritePin(VS1053_XRST_PORT, VS1053_XRST_PIN, GPIO_PIN_RESET)
+#define XCS_HIGH	hal_gpio_write(&gpio_vs1053_cs, 1)
+#define XCS_LOW		hal_gpio_write(&gpio_vs1053_cs, 0)
+#define XDCS_HIGH	hal_gpio_write(&gpio_vs1053_dcs, 1)
+#define XDCS_LOW	hal_gpio_write(&gpio_vs1053_dcs, 0)
+#define XRST_HIGH	hal_gpio_write(&gpio_vs1053_rst, 1)
+#define XRST_LOW	hal_gpio_write(&gpio_vs1053_rst, 0)
 
 /* endFill byte is required to stop playing */
 uint8_t endFillByte;
@@ -45,13 +55,9 @@ bool VS1053_Init()
 	XDCS_HIGH;		    /* XDCS High */
 	VS1053_Reset();     /* Hard Reset */
 
-	/* x 1.0 Clock, 12MHz / 7, SPI Baudrate should be less than 1.75MHz */
-	(HSPI_VS1053)->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;  /* 42MHz / 32 = 1.31MHz */
-	if(HAL_SPI_Init(HSPI_VS1053) != HAL_OK) return false;
-
 	/* Read Status to check SPI */
-	if(!VS1053_SciRead(VS1053_REG_STATUS, &status)) return false;
-	if(((status >> 4) & 0x0F) != 0x04) return false;
+//	if(!VS1053_SciRead(VS1053_REG_STATUS, &status)) return false;
+//	if(((status >> 4) & 0x0F) != 0x04) return false;
 
 	/* MP3 Mode GPIO configuration */
 	if(!VS1053_SciWrite(VS1053_REG_WRAMADDR, 0xC017)) return false; /* GPIO direction */
@@ -65,12 +71,11 @@ bool VS1053_Init()
 	/* x3.0 Clock, 36MHz / 7, SPI Baudrate should be less than 5.14MHz */
 	if(!VS1053_SciWrite(VS1053_REG_CLOCKF, 0x6000)) return false;
 
-	(HSPI_VS1053)->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;  /* 42MHz / 16 = 2.625MHz */
-	if(HAL_SPI_Init(HSPI_VS1053) != HAL_OK) return false;
+	LL_SPI_SetBaudRatePrescaler(vs1053spidrv->spi, LL_SPI_BAUDRATEPRESCALER_DIV32); /* 90MHz / 32 = about 3mhz */
 
 	/* Read Status to check SPI */
-	if(!VS1053_SciRead(VS1053_REG_STATUS, &status)) return false;
-	if(((status >> 4) & 0x0F) != 0x04) return false;
+//	if(!VS1053_SciRead(VS1053_REG_STATUS, &status)) return false;
+//	if(((status >> 4) & 0x0F) != 0x04) return false;
 
 	/* Read endFill Byte */
 	uint16_t regVal;
@@ -86,17 +91,17 @@ void VS1053_Reset()
 {
 	uint8_t dummy = 0xFF;
 	XRST_LOW;		                                    /* XRST Low */
-	HAL_SPI_Transmit(HSPI_VS1053, &dummy, 1, 10);       /* Tx Dummy */
-	HAL_Delay(10);										/* 10ms Delay */
+	hal_spi_transfer(vs1053spidrv, &dummy, 1, VS1053_SPI_TIMEOUT); /* Tx Dummy */
+	LL_mDelay(10);										/* 10ms Delay */
 	XRST_HIGH;			                                /* XRST High */
-	HAL_Delay(10);
+	LL_mDelay(10);
 }
 
 /* Soft reset */
 bool VS1053_SoftReset()
 {
 	if(!VS1053_SciWrite(VS1053_REG_MODE, 0x4804)) return false;	/* SM LINE1 | SM SDINEW | SM RESET */
-	HAL_Delay(100);
+	LL_mDelay(100);
 	return true;
 }
 
@@ -157,8 +162,8 @@ bool VS1053_SendEndFill(uint16_t num)
 /* Check DREQ pin */
 bool VS1053_IsBusy()
 {
-	if (HAL_GPIO_ReadPin(VS1053_DREQ_PORT, VS1053_DREQ_PIN) == GPIO_PIN_SET) return false;  /* Ready */
-	else return true;   /* Busy */
+	if(hal_gpio_readpin(&gpio_vs1053_dreq) == 1) return false;
+	else return true; // busy
 }
 
 /* SCI Tx */
@@ -171,13 +176,14 @@ bool VS1053_SciWrite( uint8_t address, uint16_t input )
 	buffer[2] = input >> 8;			/* Input MSB */
 	buffer[3] = input & 0x00FF;		/* Input LSB */
 
-	while (HAL_GPIO_ReadPin(VS1053_DREQ_PORT, VS1053_DREQ_PIN) == GPIO_PIN_RESET);	/* Wait DREQ High */
+	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
 
 	XCS_LOW;			/* XCS Low */
-	if(HAL_SPI_Transmit(HSPI_VS1053, buffer, sizeof(buffer), 10) != HAL_OK) return false;
+	if(hal_spi_transfer(vs1053spidrv, buffer, sizeof(buffer), VS1053_SPI_TIMEOUT) != true) return false;
 	XCS_HIGH;			/* XCS High */
 
-	while (HAL_GPIO_ReadPin(VS1053_DREQ_PORT, VS1053_DREQ_PIN) == GPIO_PIN_RESET);	/* Wait DREQ High */
+	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
+
 	return true;
 }
 
@@ -191,29 +197,30 @@ bool VS1053_SciRead( uint8_t address, uint16_t *res)
 	txBuffer[0] = VS1053_READ_CMD;
 	txBuffer[1] = address;
 
-	while(HAL_GPIO_ReadPin(VS1053_DREQ_PORT, VS1053_DREQ_PIN) == GPIO_PIN_RESET);	/* Wait DREQ High */
+	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
 
 	XCS_LOW;        /* XCS Low */
-	if(HAL_SPI_Transmit(HSPI_VS1053, txBuffer, sizeof(txBuffer), 10) != HAL_OK) return false;
-	if(HAL_SPI_TransmitReceive(HSPI_VS1053, &dummy, &rxBuffer[0], 1, 10) != HAL_OK) return false;
-	if(HAL_SPI_TransmitReceive(HSPI_VS1053, &dummy, &rxBuffer[1], 1, 10) != HAL_OK) return false;
+	if(hal_spi_transfer(vs1053spidrv, txBuffer, sizeof(txBuffer), VS1053_SPI_TIMEOUT) != true) return false;
+	if(hal_spi_txrx(vs1053spidrv, &dummy, &rxBuffer[0], 1, VS1053_SPI_TIMEOUT) != true) return false;
+	if(hal_spi_txrx(vs1053spidrv, &dummy, &rxBuffer[1], 1, VS1053_SPI_TIMEOUT) != true) return false;
 	XCS_HIGH;       /* XCS High */
 
 	*res = rxBuffer[0];     /* Received data */
 	*res <<= 8;				/* MSB */
 	*res |= rxBuffer[1];	/* LSB */
 
-	while (HAL_GPIO_ReadPin(VS1053_DREQ_PORT, VS1053_DREQ_PIN) == GPIO_PIN_RESET);	/* Wait DREQ High */
+	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
 	return true;
 }
 
 /* SDI Tx */
 bool VS1053_SdiWrite( uint8_t input )
 {
-	while (HAL_GPIO_ReadPin(VS1053_DREQ_PORT, VS1053_DREQ_PIN) == GPIO_PIN_RESET);	/* Wait DREQ High */
+
+	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
 
 	XDCS_LOW;			/* XDCS Low(SDI) */
-	if(HAL_SPI_Transmit(HSPI_VS1053, &input, 1, 10) != HAL_OK) return false;		/* SPI Tx 1 byte */
+	if(hal_spi_transfer(vs1053spidrv, &input, 1, VS1053_SPI_TIMEOUT) != true) return false;		/* SPI Tx 1 byte */
 	XDCS_HIGH;			/* XDCS High(SDI) */
 
 	return true;
@@ -222,10 +229,10 @@ bool VS1053_SdiWrite( uint8_t input )
 /* SDI Tx 32 bytes */
 bool VS1053_SdiWrite32( uint8_t *input32 )
 {
-	while (HAL_GPIO_ReadPin(VS1053_DREQ_PORT, VS1053_DREQ_PIN) == GPIO_PIN_RESET);	/* Wait DREQ High */
+	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
 
 	XDCS_LOW;			/* XDCS Low(SDI) */
-	if(HAL_SPI_Transmit(HSPI_VS1053, input32, 32, 10) != HAL_OK) return false;		/* SPI Tx 32 bytes */
+	if(hal_spi_transfer(vs1053spidrv, input32, 32, VS1053_SPI_TIMEOUT) != true) return false; /* SPI Tx 32 bytes */
 	XDCS_HIGH;			/* XDCS High(SDI) */
 
 	return true;

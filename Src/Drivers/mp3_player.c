@@ -1,5 +1,6 @@
 #include <mp3_player.h>
 #include "fatfs.h"
+#include "stm32f4xx_ll_utils.h"
 
 #define BUFFER_SIZE 	32
 
@@ -33,7 +34,7 @@ bool MP3_Play(const char *filename)
 	if(!VS1053_SetMode(0x4800)) return false;	/* SM LINE1 | SM SDINEW */
 	if(!VS1053_AutoResync()) return false;		/* AutoResync */
 	if(!VS1053_SetDecodeTime(0)) return false;	/* Set decode time */
-	if(!VS1053_SetVolume( 0x3F, 0x3F )) return false;	/* Small number is louder */
+	if(!VS1053_SetVolume( 0x00, 0x00 )) return false;	/* Small number is louder */
 
 	/* Open file to read */
 	if(f_open(&mp3File, filename, FA_READ) != FR_OK) return false;
@@ -56,7 +57,7 @@ void MP3_Stop(void)
 	VS1053_SendEndFill(2052);	/* send endfill bytes */
 	VS1053_SetMode(0x4808);		/* SM LINE1 | SM SDINEW | SM CANCEL */
 	VS1053_SendEndFill(32);		/* send endfill bytes */
-	HAL_Delay(100);
+	LL_mDelay(100);
 	VS1053_GetMode(&mode);		/* get mode value */
 	if((mode & 0x08) != 0x0)	/* if SM CANCEL is not clear, soft reset */
 	{
@@ -82,9 +83,6 @@ void MP3_Resume(void)
 void MP3_Feeder(void)
 {
 	if(!isPlaying || !isFileOpen) return;
-
-	/* Toggle Green LED */
-	HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
 
 	if(mp3FileSize > BUFFER_SIZE)
 	{

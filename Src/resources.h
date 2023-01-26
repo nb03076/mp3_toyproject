@@ -9,6 +9,8 @@ extern const GpioPin gpio_led_red;
 extern const GpioPin gpio_uart1_tx;
 extern const GpioPin gpio_uart1_rx;
 
+extern const GpioPin gpio_adc1_channel7;
+
 extern const GpioPin gpio_i2c1_scl;
 extern const GpioPin gpio_i2c1_sda;
 extern const GpioPin gpio_i2c3_scl;
@@ -34,6 +36,10 @@ extern const GpioPin gpio_vs1053_dreq;
 #define LED_GREEN_PIN LL_GPIO_PIN_13
 #define LED_RED_GPIO_PORT GPIOG
 #define LED_RED_PIN LL_GPIO_PIN_14
+
+/* adc */
+#define ADC1_CHANNEL7_GPIO_PORT GPIOA
+#define ADC1_CHANNEL7_PIN LL_GPIO_PIN_7
 
 /* uart1 */
 #define UART1_TX_GPIO_PORT GPIOA

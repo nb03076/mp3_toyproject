@@ -1,0 +1,10 @@
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:2490:22:LL_ADC_REG_SetSequencerRanks	40	static,ignoring_inline_asm
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:2722:22:LL_ADC_REG_SetFlagEndOfConversion	16	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:3276:22:LL_ADC_SetChannelSamplingTime	56	static,ignoring_inline_asm
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:3867:22:LL_ADC_Enable	16	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:3918:22:LL_ADC_REG_StartConversionSWStart	16	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:3986:26:LL_ADC_REG_ReadConversionData12	16	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:4287:26:LL_ADC_IsActiveFlag_EOCS	16	static
+../Src/adc.c:12:6:adc_init	16	static
+../Src/adc.c:26:6:hal_adc_getdata	32	static
+../Src/adc.c:49:13:adc1_init	56	static

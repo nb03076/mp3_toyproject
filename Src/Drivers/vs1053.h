@@ -1,23 +1,12 @@
-#include "stdint.h"
-
 #ifndef _VS1053_H_
 #define _VS1053_H_
 
 #include <stdbool.h>
 #include "stm32f4xx_hal.h"
+#include "spi.h"
 
-/* Pin configuration */
-extern SPI_HandleTypeDef 			hspi3;
-#define HSPI_VS1053					&hspi3
-#define VS1053_DREQ_PORT			GPIOD
-#define VS1053_DREQ_PIN				GPIO_PIN_0
-#define	VS1053_XRST_PORT			GPIOD
-#define	VS1053_XRST_PIN				GPIO_PIN_1
-#define VS1053_XCS_PORT				GPIOD
-#define VS1053_XCS_PIN				GPIO_PIN_2
-#define VS1053_XDCS_PORT			GPIOD
-#define VS1053_XDCS_PIN				GPIO_PIN_3
-
+/* spi driver */
+extern spidrv_t* vs1053spidrv;
 
 /* Functions */
 bool VS1053_Init();

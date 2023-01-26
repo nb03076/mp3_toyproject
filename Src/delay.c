@@ -11,7 +11,7 @@ void hal_delay_us(uint32_t microseconds) {
 coretex_timer hal_get_delay_timer(uint32_t timeout) {
 	coretex_timer tmp;
 	tmp.start = DWT->CYCCNT;
-	tmp.value = (SystemCoreClock / 1000000) * timeout;
+	tmp.value = (SystemCoreClock / 1000) * timeout;
 	return tmp;
 }
 

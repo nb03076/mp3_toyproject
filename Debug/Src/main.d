@@ -51,10 +51,7 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- /home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8g2.h \
- /home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8x8.h \
- /home/kang/space/ll_mp3_project/Src/Drivers/u8g2_stm.h ../Src/clock.h \
- ../Src/resources.h ../Src/gpio.h \
+ ../Src/clock.h ../Src/resources.h ../Src/gpio.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h \
@@ -66,7 +63,7 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h \
  ../Src/uart.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h \
- ../Src/sdio.h \
+ ../Src/sdio.h ../Src/adc.h ../Src/cli.h ../Src/delay.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h \
@@ -76,7 +73,7 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h \
- ../Src/cli.h ../Src/delay.h
+ /home/kang/space/ll_mp3_project/Src/application/mp3_app.h
 /home/kang/space/ll_mp3_project/Src/core/core.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h:
 /home/kang/space/ll_mp3_project/conf/FreeRTOSConfig.h:
@@ -130,9 +127,6 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
-/home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8g2.h:
-/home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8x8.h:
-/home/kang/space/ll_mp3_project/Src/Drivers/u8g2_stm.h:
 ../Src/clock.h:
 ../Src/resources.h:
 ../Src/gpio.h:
@@ -148,6 +142,9 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
 ../Src/uart.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
 ../Src/sdio.h:
+../Src/adc.h:
+../Src/cli.h:
+../Src/delay.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h:
@@ -157,5 +154,4 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:
-../Src/cli.h:
-../Src/delay.h:
+/home/kang/space/ll_mp3_project/Src/application/mp3_app.h:

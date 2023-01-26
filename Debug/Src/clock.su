@@ -24,7 +24,7 @@
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h:343:22:LL_PWR_EnableOverDriveMode	4	static
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h:505:22:LL_PWR_SetRegulVoltageScaling	16	static
 ../Src/clock.c:9:6:hal_bus_init_early	8	static
-../Src/clock.c:33:6:hal_clock_deinit_early	8	static
-../Src/clock.c:58:6:hal_clock_init_early	24	static
-../Src/clock.c:109:6:hal_ltdc_clock_init_early	16	static
-../Src/clock.c:121:6:hal_dwt_init_early	4	static
+../Src/clock.c:35:6:hal_clock_deinit_early	8	static
+../Src/clock.c:62:6:hal_clock_init_early	24	static
+../Src/clock.c:113:6:hal_ltdc_clock_init_early	16	static
+../Src/clock.c:125:6:hal_dwt_init_early	4	static

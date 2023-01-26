@@ -1,6 +1,6 @@
 #include "spi.h"
 #include "core.h"
-
+#include "resources.h"
 #include "cli.h"
 #include "stm32f4xx_ll_bus.h"
 #include "stm32f4xx_ll_spi.h"
@@ -76,6 +76,13 @@ bool hal_spi_transfer(spidrv_t* drv, uint8_t* data, uint32_t size, uint32_t time
 		data++;
 	}
 
+	while(LL_SPI_IsActiveFlag_BSY(drv->spi)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			hal_cli_printf("spi busy flag failed");
+			return false;
+		}
+	}
+
 	return true;
 }
 
@@ -93,7 +100,7 @@ bool hal_spi_receive(spidrv_t* drv, uint8_t* data, uint32_t size, uint32_t timeo
 				return false;
 			}
 		}
-		LL_SPI_ReceiveData8(drv->spi);
+		*data = LL_SPI_ReceiveData8(drv->spi);
 
 		size--;
 		data++;
@@ -104,20 +111,34 @@ bool hal_spi_receive(spidrv_t* drv, uint8_t* data, uint32_t size, uint32_t timeo
 
 bool hal_spi_txrx(spidrv_t* drv, uint8_t* tx, uint8_t* rx, uint32_t size, uint32_t timeout)
 {
-	while(size > 0) {
-		if(hal_spi_transfer(drv, tx, 1, timeout) == false) {
-			hal_cli_printf("spi tx failed");
-			return false;
-		}
+	coretex_timer timer;
 
-		if(hal_spi_receive(drv, rx, 1, timeout) == false) {
-			hal_cli_printf("spi rx failed");
-			return false;
-		}
+	timer = hal_get_delay_timer(timeout);
 
-		size--;
+	for(int i = 0; i < size; i++) {
+		while(!LL_SPI_IsActiveFlag_TXE(drv->spi)) {
+			if(hal_delay_timer_is_expired(&timer)) {
+				hal_cli_printf("spi txe flag failed");
+				return false;
+			}
+		}
+		LL_SPI_TransmitData8(drv->spi, tx[i]);
+
+		while(!LL_SPI_IsActiveFlag_RXNE(drv->spi)) {
+			if(hal_delay_timer_is_expired(&timer)) {
+				hal_cli_printf("spi rxne flag failed");
+				return false;
+			}
+		}
+		rx[i] = LL_SPI_ReceiveData8(drv->spi);
 	}
 
+	while(LL_SPI_IsActiveFlag_BSY(drv->spi)) {
+		if(hal_delay_timer_is_expired(&timer)) {
+			hal_cli_printf("spi busy flag failed");
+			return false;
+		}
+	}
 	return true;
 }
 
@@ -292,8 +313,8 @@ static void spi4_config(void)
 	SPI_InitStruct.TransferDirection = LL_SPI_FULL_DUPLEX;
 	SPI_InitStruct.Mode = LL_SPI_MODE_MASTER;
 	SPI_InitStruct.DataWidth = LL_SPI_DATAWIDTH_8BIT;
-	SPI_InitStruct.ClockPolarity = LL_SPI_POLARITY_HIGH;
-	SPI_InitStruct.ClockPhase = LL_SPI_PHASE_2EDGE;
+	SPI_InitStruct.ClockPolarity = LL_SPI_POLARITY_LOW;
+	SPI_InitStruct.ClockPhase = LL_SPI_PHASE_1EDGE;
 	SPI_InitStruct.NSS = LL_SPI_NSS_SOFT;
 	SPI_InitStruct.BaudRate = LL_SPI_BAUDRATEPRESCALER_DIV64;
 	SPI_InitStruct.BitOrder = LL_SPI_MSB_FIRST;

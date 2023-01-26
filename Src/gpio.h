@@ -89,6 +89,10 @@ static inline bool hal_gpio_read(const GpioPin* gpio) {
 	}
 }
 
+static inline uint32_t hal_gpio_readpin(const GpioPin* gpio) {
+	return LL_GPIO_IsInputPinSet(gpio->port, gpio->pin);
+}
+
 static inline void hal_gpio_toggle(const GpioPin* gpio) {
 	uint32_t odr = gpio->port->ODR;
 	gpio->port->BSRR = ((odr & gpio->pin) << 16u) | (~odr & gpio->pin);

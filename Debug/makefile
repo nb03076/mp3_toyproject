@@ -11,6 +11,7 @@ RM := rm -rf
 -include sources.mk
 -include Startup/subdir.mk
 -include Src/core/subdir.mk
+-include Src/application/subdir.mk
 -include Src/Middleware/u8g2/subdir.mk
 -include Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS/Config/subdir.mk
 -include Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS/subdir.mk

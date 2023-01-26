@@ -30,6 +30,7 @@ Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS/Config \
 Src/Middleware/SEGGER/SystemView/Sample/FreeRTOS \
 Src/Middleware/u8g2 \
 Src \
+Src/application \
 Src/core \
 Startup \
 

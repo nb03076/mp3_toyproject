@@ -16,7 +16,6 @@ i2cdrv_t i2c1drv;
 i2cdrv_t i2c3drv;
 
 #define I2C_MUTEX_TIMEOUT 1000 /* 1sec */
-#define I2C_POLLING_TIMEOUT 1000000 /* 1sec */
 
 
 void i2c_init(I2cID i2c_id)
@@ -155,7 +154,7 @@ bool hal_i2c_receive(i2cdrv_t* drv, uint8_t addr, uint32_t regaddr, uint8_t* buf
 		return false;
 	}
 
-	timer = hal_get_delay_timer(I2C_POLLING_TIMEOUT);
+	timer = hal_get_delay_timer(timeout);
 
 
 	while(LL_I2C_IsActiveFlag_BUSY(drv->i2c)) {

@@ -3,6 +3,8 @@
 const GpioPin gpio_led_green = {.port = LED_GREEN_GPIO_PORT, .pin = LED_GREEN_PIN};
 const GpioPin gpio_led_red = {.port = LED_RED_GPIO_PORT, .pin = LED_RED_PIN};
 
+const GpioPin gpio_adc1_channel7 = {.port = ADC1_CHANNEL7_GPIO_PORT, .pin = ADC1_CHANNEL7_PIN};
+
 const GpioPin gpio_uart1_tx = {.port = UART1_TX_GPIO_PORT, .pin = UART1_TX_PIN};
 const GpioPin gpio_uart1_rx = {.port = UART1_RX_GPIO_PORT, .pin = UART1_RX_PIN};
 
@@ -45,12 +47,13 @@ void hal_resources_init(void) {
 	hal_gpio_write(&gpio_ssd1306_cs, 1);
 
 	/* vs1053 */
-	hal_gpio_init(&gpio_vs1053_cs, GpioModeOutputPushPull, GpioPullUp, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_vs1053_cs, GpioModeOutputPushPull, GpioPullNo, GpioSpeedFreqLow);
 	hal_gpio_write(&gpio_vs1053_cs, 1);
-	hal_gpio_init(&gpio_vs1053_dcs, GpioModeOutputPushPull, GpioPullUp, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_vs1053_dcs, GpioModeOutputPushPull, GpioPullNo, GpioSpeedFreqLow);
 	hal_gpio_write(&gpio_vs1053_dcs, 1);
-	hal_gpio_init(&gpio_vs1053_rst, GpioModeOutputPushPull, GpioPullUp, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_vs1053_rst, GpioModeOutputPushPull, GpioPullNo, GpioSpeedFreqLow);
 	hal_gpio_write(&gpio_vs1053_rst, 1);
-	hal_gpio_init(&gpio_vs1053_dreq, GpioModeInput, GpioPullUp, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_vs1053_dreq, GpioModeInput, GpioPullNo, GpioSpeedFreqLow);
+
 	/* button */
 }
