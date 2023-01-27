@@ -1,5 +1,8 @@
+/* middleware */
 #include "core.h"
+#include "fatfs.h"
 
+/* hal driver */
 #include "clock.h"
 #include "resources.h"
 #include "i2c.h"
@@ -11,10 +14,11 @@
 #include "cli.h"
 #include "delay.h"
 
-#include "fatfs.h"
+/* application */
 #include "mp3_app.h"
 
-void initThread(void* param) {
+
+static void initThread(void* param) {
 	hal_cli_printf("enter mainthread");
 
 	sdio_init();
@@ -30,14 +34,7 @@ void initThread(void* param) {
 
 	hal_resources_init();
 
-
-	while(1) {
-		hal_adc_getdata(1, &temp);
-		hal_cli_printf("%d",temp);
-		vTaskDelay(1000);
-	}
-
-	xTaskCreate(mp3Thread, "mp3_app", 256, NULL, 3, NULL);
+	xTaskCreate(mp3Thread, "mp3_app", 512, NULL, 3, NULL);
 	vTaskDelete(NULL);
 }
 
@@ -56,7 +53,7 @@ int main(void) {
 	hal_cli_printf("mcu init early finished");
 
 	traceSTART();
-	xTaskCreate(initThread, "init", 256, NULL, 3, NULL);
+	xTaskCreate(initThread, "init", 512, NULL, 3, NULL);
 	vTaskStartScheduler();
 
 	for(;;);
