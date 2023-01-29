@@ -1,6 +1,7 @@
 #include "gpio.h"
+#include "core.h"
 
-#define GET_SYSCFG_EXTI_PORT(gpio)						\
+#define GET_SYSCFG_EXTI_PORT(gpio)					\
 	(((gpio) == (GPIOA)) ? LL_SYSCFG_EXTI_PORTA : 	\
 	 ((gpio) == (GPIOB)) ? LL_SYSCFG_EXTI_PORTB :	\
 	 ((gpio) == (GPIOC)) ? LL_SYSCFG_EXTI_PORTC :	\
@@ -10,7 +11,7 @@
 	 ((gpio) == (GPIOG)) ? LL_SYSCFG_EXTI_PORTG :	\
 			 	 	 	   LL_SYSCFG_EXTI_PORTH)
 
-#define GPIO_PIN_MAP(pin, prefix)					\
+#define GPIO_PIN_MAP(pin, prefix)				\
 	(((pin) == (LL_GPIO_PIN_0))  ? prefix##0  : \
 	 ((pin) == (LL_GPIO_PIN_1))  ? prefix##1  : \
 	 ((pin) == (LL_GPIO_PIN_2))  ? prefix##2  : \
@@ -26,13 +27,16 @@
 	 ((pin) == (LL_GPIO_PIN_12)) ? prefix##12 : \
 	 ((pin) == (LL_GPIO_PIN_13)) ? prefix##13 : \
 	 ((pin) == (LL_GPIO_PIN_14)) ? prefix##14 : \
-			 	 	 	 	 	   	   	   prefix##15)
+			 	 	 	 	 	   prefix##15)
 
 
 #define GET_SYSCFG_EXTI_LINE(pin) GPIO_PIN_MAP(pin, LL_SYSCFG_EXTI_LINE)
 #define GET_EXTI_LINE(pin) GPIO_PIN_MAP(pin, LL_EXTI_LINE_)
 
 static volatile GpioInterrupt gpio_interrupt[GPIO_NUMBER];
+
+static uint8_t hal_gpio_get_pin_number(const GpioPin* gpio);
+static void hal_gpio_exti_call(uint16_t pin_num);
 
 static uint8_t hal_gpio_get_pin_number(const GpioPin* gpio) {
 	uint8_t pin_number;
@@ -155,6 +159,58 @@ void hal_gpio_init_alt(
 		}
 	}
 
+}
+
+void hal_gpio_add_exti_callback(const GpioPin* gpio, GpioExtiCallback cb, void* context) {
+	uint16_t pin;
+	taskENTER_CRITICAL();
+	pin = hal_gpio_get_pin_number(gpio);
+	gpio_interrupt[pin].callback = cb;
+	gpio_interrupt[pin].context = context;
+	gpio_interrupt[pin].ready = true;
+	taskEXIT_CRITICAL();
+}
+
+static void hal_gpio_exti_call(uint16_t pin_num) {
+	if(gpio_interrupt[pin_num].callback && gpio_interrupt[pin_num].ready) {
+		gpio_interrupt[pin_num].callback(gpio_interrupt[pin_num].context);
+	}
+}
+
+
+void EXTI0_IRQHandler(void) {
+    if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_0)) {
+        LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_0);
+        hal_gpio_exti_call(0);
+    }
+}
+
+void EXTI1_IRQHandler(void) {
+    if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_1)) {
+        LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_1);
+        hal_gpio_exti_call(1);
+    }
+}
+
+void EXTI2_IRQHandler(void) {
+    if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_2)) {
+        LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_2);
+        hal_gpio_exti_call(2);
+    }
+}
+
+void EXTI3_IRQHandler(void) {
+    if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_3)) {
+        LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_3);
+        hal_gpio_exti_call(3);
+    }
+}
+
+void EXTI4_IRQHandler(void) {
+    if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_4)) {
+        LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_4);
+        hal_gpio_exti_call(4);
+    }
 }
 
 

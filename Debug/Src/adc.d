@@ -57,9 +57,7 @@ Src/adc.o: ../Src/adc.c \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/list.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
- /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- /home/kang/space/ll_mp3_project/Src/core/base.h \
- /home/kang/space/ll_mp3_project/Src/delay.h
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h:
 /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h:
@@ -123,5 +121,3 @@ Src/adc.o: ../Src/adc.c \
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-/home/kang/space/ll_mp3_project/Src/core/base.h:
-/home/kang/space/ll_mp3_project/Src/delay.h:

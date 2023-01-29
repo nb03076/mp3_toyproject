@@ -59,11 +59,10 @@ Src/Drivers/u8g2_stm.o: ../Src/Drivers/u8g2_stm.c \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- /home/kang/space/ll_mp3_project/Src/core/base.h \
- /home/kang/space/ll_mp3_project/Src/delay.h \
  /home/kang/space/ll_mp3_project/Src/spi.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h \
- /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
+ /home/kang/space/ll_mp3_project/Src/delay.h
 ../Src/Drivers/u8g2_stm.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8g2.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/u8g2/u8x8.h:
@@ -124,8 +123,7 @@ Src/Drivers/u8g2_stm.o: ../Src/Drivers/u8g2_stm.c \
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-/home/kang/space/ll_mp3_project/Src/core/base.h:
-/home/kang/space/ll_mp3_project/Src/delay.h:
 /home/kang/space/ll_mp3_project/Src/spi.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:
+/home/kang/space/ll_mp3_project/Src/delay.h:

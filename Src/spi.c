@@ -2,6 +2,7 @@
 #include "core.h"
 #include "resources.h"
 #include "cli.h"
+#include "delay.h"
 #include "stm32f4xx_ll_bus.h"
 #include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_dma.h"

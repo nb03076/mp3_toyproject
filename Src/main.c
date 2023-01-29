@@ -13,13 +13,15 @@
 #include "adc.h"
 #include "cli.h"
 #include "delay.h"
+#include "tim.h"
 
 /* application */
 #include "mp3_app.h"
+#include "display_app.h"
 
 
 static void initThread(void* param) {
-	hal_cli_printf("enter mainthread");
+	hal_cli_printf("enter initThread");
 
 	sdio_init();
 	MX_FATFS_Init();
@@ -32,9 +34,15 @@ static void initThread(void* param) {
 
 	adc_init(AdcId1);
 
+	tim_init(TimId4);
+
 	hal_resources_init();
 
 	xTaskCreate(mp3Thread, "mp3_app", 512, NULL, 3, NULL);
+	xTaskCreate(displayThread, "display", 512, NULL, 3, NULL);
+
+	hal_cli_printf("exit initThread");
+
 	vTaskDelete(NULL);
 }
 
@@ -53,7 +61,7 @@ int main(void) {
 	hal_cli_printf("mcu init early finished");
 
 	traceSTART();
-	xTaskCreate(initThread, "init", 512, NULL, 3, NULL);
+	xTaskCreate(initThread, "init", 256, NULL, 3, NULL);
 	vTaskStartScheduler();
 
 	for(;;);

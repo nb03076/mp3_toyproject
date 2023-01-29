@@ -19,4 +19,5 @@ bool hal_adc_getdata(AdcID id, uint32_t* data);
 #ifdef __cplusplus
 }
 #endif
+
 #endif /* ADC_H_ */

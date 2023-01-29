@@ -53,8 +53,6 @@ Src/Drivers/vs1053.o: ../Src/Drivers/vs1053.c ../Src/Drivers/vs1053.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- /home/kang/space/ll_mp3_project/Src/core/base.h \
- /home/kang/space/ll_mp3_project/Src/delay.h \
  /home/kang/space/ll_mp3_project/Src/gpio.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
@@ -118,8 +116,6 @@ Src/Drivers/vs1053.o: ../Src/Drivers/vs1053.c ../Src/Drivers/vs1053.h \
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-/home/kang/space/ll_mp3_project/Src/core/base.h:
-/home/kang/space/ll_mp3_project/Src/delay.h:
 /home/kang/space/ll_mp3_project/Src/gpio.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:

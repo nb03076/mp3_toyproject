@@ -1,0 +1,2 @@
+../Src/application/display_app.c:16:13:refresh_rtc_timercb	16	static
+../Src/application/display_app.c:20:6:displayThread	32	static,ignoring_inline_asm

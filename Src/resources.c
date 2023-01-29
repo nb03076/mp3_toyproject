@@ -3,7 +3,17 @@
 const GpioPin gpio_led_green = {.port = LED_GREEN_GPIO_PORT, .pin = LED_GREEN_PIN};
 const GpioPin gpio_led_red = {.port = LED_RED_GPIO_PORT, .pin = LED_RED_PIN};
 
+const GpioPin gpio_button_left = {.port = BUTTON_LEFT_GPIO_PORT, .pin = BUTTON_LEFT_PIN};
+const GpioPin gpio_button_right = {.port = BUTTON_RIGHT_GPIO_PORT, .pin = BUTTON_RIGHT_PIN};
+const GpioPin gpio_button_center = {.port = BUTTON_CENTER_GPIO_PORT, .pin = BUTTON_CENTER_PIN};
+const GpioPin gpio_button_up = {.port = BUTTON_UP_GPIO_PORT, .pin = BUTTON_UP_PIN};
+const GpioPin gpio_button_down = {.port = BUTTON_DOWN_GPIO_PORT, .pin = BUTTON_DOWN_PIN};
+
 const GpioPin gpio_adc1_channel7 = {.port = ADC1_CHANNEL7_GPIO_PORT, .pin = ADC1_CHANNEL7_PIN};
+
+const GpioPin gpio_tim4_channel1 = {.port = TIM4_CHANNEL1_GPIO_PORT, .pin = TIM4_CHANNEL1_PIN};
+const GpioPin gpio_tim4_channel2 = {.port = TIM4_CHANNEL2_GPIO_PORT, .pin = TIM4_CHANNEL2_PIN};
+const GpioPin gpio_tim4_channel3 = {.port = TIM4_CHANNEL3_GPIO_PORT, .pin = TIM4_CHANNEL3_PIN};
 
 const GpioPin gpio_uart1_tx = {.port = UART1_TX_GPIO_PORT, .pin = UART1_TX_PIN};
 const GpioPin gpio_uart1_rx = {.port = UART1_RX_GPIO_PORT, .pin = UART1_RX_PIN};
@@ -38,6 +48,24 @@ void hal_resources_init_early(void) {
 }
 
 void hal_resources_init(void) {
+	/* button */
+	hal_gpio_init(&gpio_button_left, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_button_right, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_button_center, GpioModeInterruptFall, GpioPullNo, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_button_up, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_button_down, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
+
+	NVIC_SetPriority(EXTI0_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+	NVIC_EnableIRQ(EXTI0_IRQn);
+	NVIC_SetPriority(EXTI1_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+	NVIC_EnableIRQ(EXTI1_IRQn);
+	NVIC_SetPriority(EXTI2_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+	NVIC_EnableIRQ(EXTI2_IRQn);
+	NVIC_SetPriority(EXTI3_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+	NVIC_EnableIRQ(EXTI3_IRQn);
+	NVIC_SetPriority(EXTI4_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+	NVIC_EnableIRQ(EXTI4_IRQn);
+
 	/* ssd1306 */
 	hal_gpio_init(&gpio_ssd1306_reset, GpioModeOutputPushPull, GpioPullUp, GpioSpeedFreqLow);
 	hal_gpio_write(&gpio_ssd1306_reset, 1);
@@ -55,5 +83,4 @@ void hal_resources_init(void) {
 	hal_gpio_write(&gpio_vs1053_rst, 1);
 	hal_gpio_init(&gpio_vs1053_dreq, GpioModeInput, GpioPullNo, GpioSpeedFreqLow);
 
-	/* button */
 }

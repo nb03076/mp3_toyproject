@@ -6,10 +6,20 @@
 extern const GpioPin gpio_led_green;
 extern const GpioPin gpio_led_red;
 
+extern const GpioPin gpio_button_left;
+extern const GpioPin gpio_button_right;
+extern const GpioPin gpio_button_center;
+extern const GpioPin gpio_button_up;
+extern const GpioPin gpio_button_down;
+
 extern const GpioPin gpio_uart1_tx;
 extern const GpioPin gpio_uart1_rx;
 
 extern const GpioPin gpio_adc1_channel7;
+
+extern const GpioPin gpio_tim4_channel1;
+extern const GpioPin gpio_tim4_channel2;
+extern const GpioPin gpio_tim4_channel3;
 
 extern const GpioPin gpio_i2c1_scl;
 extern const GpioPin gpio_i2c1_sda;
@@ -37,9 +47,29 @@ extern const GpioPin gpio_vs1053_dreq;
 #define LED_RED_GPIO_PORT GPIOG
 #define LED_RED_PIN LL_GPIO_PIN_14
 
+/* button */
+#define BUTTON_LEFT_GPIO_PORT GPIOB
+#define BUTTON_LEFT_PIN LL_GPIO_PIN_0
+#define BUTTON_RIGHT_GPIO_PORT GPIOB
+#define BUTTON_RIGHT_PIN LL_GPIO_PIN_1
+#define BUTTON_CENTER_GPIO_PORT GPIOB
+#define BUTTON_CENTER_PIN LL_GPIO_PIN_2
+#define BUTTON_UP_GPIO_PORT GPIOB
+#define BUTTON_UP_PIN LL_GPIO_PIN_3
+#define BUTTON_DOWN_GPIO_PORT GPIOB
+#define BUTTON_DOWN_PIN LL_GPIO_PIN_4
+
 /* adc */
 #define ADC1_CHANNEL7_GPIO_PORT GPIOA
 #define ADC1_CHANNEL7_PIN LL_GPIO_PIN_7
+
+/* tim */
+#define TIM4_CHANNEL1_GPIO_PORT GPIOD
+#define TIM4_CHANNEL1_PIN LL_GPIO_PIN_12
+#define TIM4_CHANNEL2_GPIO_PORT GPIOD
+#define TIM4_CHANNEL2_PIN LL_GPIO_PIN_13
+#define TIM4_CHANNEL3_GPIO_PORT GPIOD
+#define TIM4_CHANNEL3_PIN LL_GPIO_PIN_14
 
 /* uart1 */
 #define UART1_TX_GPIO_PORT GPIOA

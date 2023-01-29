@@ -1,0 +1,6 @@
+../Src/Drivers/ds3231.c:26:6:ds3231_register_driver	16	static
+../Src/Drivers/ds3231.c:30:6:ds3231_get_time	24	static
+../Src/Drivers/ds3231.c:49:6:ds3231_print_time	40	static
+../Src/Drivers/ds3231.c:54:7:ds3231_day_to_string	16	static
+../Src/Drivers/ds3231.c:76:13:ds3231_read_reg	32	static
+../Src/Drivers/ds3231.c:86:23:B2D	16	static

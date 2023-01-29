@@ -21,6 +21,8 @@ void hal_bus_init_early(void) {
 
 	LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC1);
 
+	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM4);
+
 	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
 	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C3);
 
@@ -46,6 +48,8 @@ void hal_clock_deinit_early(void) {
 	LL_AHB1_GRP1_DisableClock(LL_AHB1_GRP1_PERIPH_DMA2);
 
 	LL_APB2_GRP1_DisableClock(LL_APB2_GRP1_PERIPH_ADC1);
+
+	LL_APB1_GRP1_DisableClock(LL_APB1_GRP1_PERIPH_TIM4);
 
 	LL_APB1_GRP1_DisableClock(LL_APB1_GRP1_PERIPH_I2C1);
 	LL_APB1_GRP1_DisableClock(LL_APB1_GRP1_PERIPH_I2C3);

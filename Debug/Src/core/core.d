@@ -18,7 +18,9 @@ Src/core/core.o: ../Src/core/core.c ../Src/core/core.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- ../Src/core/base.h /home/kang/space/ll_mp3_project/Src/delay.h \
+ /home/kang/space/ll_mp3_project/Src/cli.h \
+ /home/kang/space/ll_mp3_project/Src/uart.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h \
  /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
  /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/core_cm4.h \
@@ -49,10 +51,7 @@ Src/core/core.o: ../Src/core/core.c ../Src/core/core.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
- /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- /home/kang/space/ll_mp3_project/Src/cli.h \
- /home/kang/space/ll_mp3_project/Src/uart.h \
- /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 ../Src/core/core.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h:
 /home/kang/space/ll_mp3_project/conf/FreeRTOSConfig.h:
@@ -73,8 +72,9 @@ Src/core/core.o: ../Src/core/core.c ../Src/core/core.h \
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-../Src/core/base.h:
-/home/kang/space/ll_mp3_project/Src/delay.h:
+/home/kang/space/ll_mp3_project/Src/cli.h:
+/home/kang/space/ll_mp3_project/Src/uart.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
 /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h:
 /home/kang/space/ll_mp3_project/Src/HAL/CMSIS/Include/core_cm4.h:
@@ -106,6 +106,3 @@ Src/core/core.o: ../Src/core/core.c ../Src/core/core.h \
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
-/home/kang/space/ll_mp3_project/Src/cli.h:
-/home/kang/space/ll_mp3_project/Src/uart.h:
-/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:

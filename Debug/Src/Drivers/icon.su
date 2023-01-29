@@ -1,0 +1,2 @@
+../Src/Drivers/icon.c:15:6:icon_draw_play	24	static
+../Src/Drivers/icon.c:22:6:icon_draw_pause	24	static

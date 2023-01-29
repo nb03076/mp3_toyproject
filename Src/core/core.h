@@ -4,8 +4,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-#include "base.h"
-#include "delay.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -13,9 +11,13 @@ extern "C" {
 
 void ErrorHandler(void);
 
+
+#if 0
 SemaphoreHandle_t* mutex_alloc(void);
 HalStatus mutex_lock(SemaphoreHandle_t* instance, uint32_t timeout);
 HalStatus mutex_unlock(SemaphoreHandle_t* instance);
+#endif
+
 
 #ifdef __cplusplus
 }

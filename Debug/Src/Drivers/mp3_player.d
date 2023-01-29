@@ -55,8 +55,6 @@ Src/Drivers/mp3_player.o: ../Src/Drivers/mp3_player.c \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- /home/kang/space/ll_mp3_project/Src/core/base.h \
- /home/kang/space/ll_mp3_project/Src/delay.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h \
@@ -123,8 +121,6 @@ Src/Drivers/mp3_player.o: ../Src/Drivers/mp3_player.c \
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-/home/kang/space/ll_mp3_project/Src/core/base.h:
-/home/kang/space/ll_mp3_project/Src/delay.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h:

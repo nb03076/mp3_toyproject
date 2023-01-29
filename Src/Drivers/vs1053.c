@@ -7,7 +7,7 @@
 #include "stm32f4xx_ll_utils.h"
 
 
-#define VS1053_SPI_TIMEOUT 10 * 1000
+#define VS1053_SPI_TIMEOUT 10
 
 /* Commands */
 #define VS1053_WRITE_CMD	0x02;
@@ -68,10 +68,10 @@ bool VS1053_Init()
 	/* Soft reset */
 	if(!VS1053_SoftReset()) return false;
 
-	/* x3.0 Clock, 36MHz / 7, SPI Baudrate should be less than 5.14MHz */
-	if(!VS1053_SciWrite(VS1053_REG_CLOCKF, 0x6000)) return false;
+	/* x4.0 Clock */
+	if(!VS1053_SciWrite(VS1053_REG_CLOCKF, 0xa000)) return false;
 
-	LL_SPI_SetBaudRatePrescaler(vs1053spidrv->spi, LL_SPI_BAUDRATEPRESCALER_DIV32); /* 90MHz / 32 = about 3mhz */
+	LL_SPI_SetBaudRatePrescaler(vs1053spidrv->spi, LL_SPI_BAUDRATEPRESCALER_DIV16); /* 90MHz / 16 = about 5.6mhz */
 
 	/* Read Status to check SPI */
 //	if(!VS1053_SciRead(VS1053_REG_STATUS, &status)) return false;
@@ -115,6 +115,7 @@ bool VS1053_SetVolume(uint8_t volumeLeft, uint8_t volumeRight)
     return true;
 }
 
+
 /* Mode control */
 bool VS1053_SetMode(uint16_t mode)
 {
@@ -142,6 +143,12 @@ bool VS1053_SetDecodeTime(uint16_t time)
 	if(!VS1053_SciWrite(VS1053_REG_DECODE_TIME, time)) return false;
 	if(!VS1053_SciWrite(VS1053_REG_DECODE_TIME, time)) return false;
 	return true;
+}
+
+uint16_t VS1053_GetDecodeTime(void) {
+	uint16_t time = 0;
+	if(!VS1053_SciRead(VS1053_REG_DECODE_TIME, &time)) return false;
+	return time;
 }
 
 /* Send endfill bytes */

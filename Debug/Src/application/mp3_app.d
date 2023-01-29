@@ -56,13 +56,14 @@ Src/application/mp3_app.o: ../Src/application/mp3_app.c \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
- /home/kang/space/ll_mp3_project/Src/core/base.h \
- /home/kang/space/ll_mp3_project/Src/delay.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/timers.h \
  /home/kang/space/ll_mp3_project/Src/adc.h \
  /home/kang/space/ll_mp3_project/Src/cli.h \
  /home/kang/space/ll_mp3_project/Src/uart.h \
- /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h \
+ /home/kang/space/ll_mp3_project/Src/tim.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h
 ../Src/application/mp3_app.h:
 /home/kang/space/ll_mp3_project/Src/Drivers/mp3_player.h:
 /home/kang/space/ll_mp3_project/Src/Drivers/vs1053.h:
@@ -120,10 +121,11 @@ Src/application/mp3_app.o: ../Src/application/mp3_app.c \
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/semphr.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
-/home/kang/space/ll_mp3_project/Src/core/base.h:
-/home/kang/space/ll_mp3_project/Src/delay.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/timers.h:
 /home/kang/space/ll_mp3_project/Src/adc.h:
 /home/kang/space/ll_mp3_project/Src/cli.h:
 /home/kang/space/ll_mp3_project/Src/uart.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
+/home/kang/space/ll_mp3_project/Src/tim.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:

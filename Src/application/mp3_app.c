@@ -1,9 +1,13 @@
 #include "mp3_app.h"
 #include "mp3_player.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 #include "vs1053.h"
 #include "timers.h"
 #include "adc.h"
 #include "cli.h"
+#include "tim.h"
 
 #define VS1053_VOLUME_PERIOD 1000
 
@@ -12,7 +16,15 @@ static VolumeLevel prev_volume = VOLUME_OFF;
 
 static uint8_t convert_volume_level(VolumeLevel vol);
 
-static void volume_control_timercb( TimerHandle_t xTimer ) {
+#if 0
+sd 카드 api 내부에 있는 hal_delay때문에 ISR 내부에서는 사용못하는듯
+static void mp3_feed_timcb(void* context) {
+	if(MP3_is_playing())
+		MP3_Feeder();
+}
+#endif
+
+static void volume_control_timercb(TimerHandle_t xTimer) {
 	uint32_t potentiometer = 0;
 	uint8_t volume = 0xFF;
 
@@ -25,8 +37,7 @@ static void volume_control_timercb( TimerHandle_t xTimer ) {
 	}
 
 	prev_volume = potentiometer;
-
-	hal_cli_printf("%d",potentiometer);
+	hal_cli_printf("%d", VS1053_GetDecodeTime()/256);
 }
 
 void mp3Thread(void* param) {
