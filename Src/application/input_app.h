@@ -5,7 +5,10 @@
 extern "C" {
 #endif
 
+#include "gpio.h"
+
 typedef enum {
+	InputTypeNone,
 	InputTypePress,
 	InputTypeRelease,
 	InputTypeLong,
@@ -13,8 +16,13 @@ typedef enum {
 }InputType;
 
 typedef struct {
-//key, sequence, input type
+	uint32_t sequence;
+	InputType type;
+	GpioPin* pin;
 }InputEvent;
+
+
+void inputThread(void* param);
 
 
 #ifdef __cplusplus

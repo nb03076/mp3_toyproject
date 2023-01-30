@@ -1,2 +1,2 @@
-../Src/application/display_app.c:16:13:refresh_rtc_timercb	16	static
-../Src/application/display_app.c:20:6:displayThread	32	static
+../Src/application/display_app.c:27:13:refresh_rtc_timercb	24	static
+../Src/application/display_app.c:32:6:displayThread	152	static

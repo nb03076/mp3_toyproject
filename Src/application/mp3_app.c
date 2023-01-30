@@ -20,29 +20,15 @@ QueueHandle_t mp3_queuehandle;
 
 static uint8_t convert_volume_level(VolumeLevel vol);
 
-#if 1
 /* sd 카드 api 내부에 있는 hal_delay때문에 ISR 내부에서는 사용못함 */
+/* 주기를 30ms 정도로 해도 되나 중간에 화이트 노이즈 때문에 20ms로 두었음 */
+/* adafruit 라이브러리는 24ms마다 처리하는걸로 해놨음 */
 static void mp3_feed_notify_timcb(void* context) {
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	LL_TIM_ClearFlag_UPDATE(TIM4);
 	vTaskNotifyGiveFromISR(mp3_taskhandle, &xHigherPriorityTaskWoken);
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
-#endif
-
-#if 0
-static void vs1053_dreq_exti_callback(void* context) {
-	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-
-	if(hal_gpio_read(&gpio_vs1053_dreq)) {
-		if(MP3_is_playing()) {
-			vTaskNotifyGiveIndexedFromISR(mp3task_handle, 0, &xHigherPriorityTaskWoken);
-		}
-	}
-
-	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-}
-#endif
 
 static void volume_control_timercb(TimerHandle_t xTimer) {
 	uint32_t potentiometer = 0;
@@ -57,8 +43,6 @@ static void volume_control_timercb(TimerHandle_t xTimer) {
 	}
 
 	prev_volume = potentiometer;
-
-	hal_cli_printf("%d", VS1053_GetDecodeTime());
 }
 
 static uint8_t convert_volume_level(VolumeLevel vol) {

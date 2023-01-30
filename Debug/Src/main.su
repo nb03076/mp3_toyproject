@@ -1,2 +1,2 @@
-../Src/main.c:23:13:initThread	24	static
-../Src/main.c:49:5:main	16	static
+../Src/main.c:24:13:initThread	24	static
+../Src/main.c:51:5:main	16	static

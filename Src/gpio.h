@@ -71,6 +71,8 @@ typedef enum{
 }GpioAltFn;
 
 
+
+
 void hal_gpio_init(const GpioPin* gpio, const GpioMode mode, const GpioPull pull, const GpioSpeed speed);
 void hal_gpio_init_alt(const GpioPin* gpio, const GpioMode mode, const GpioPull pull, const GpioSpeed speed, const GpioAltFn alt_fn);
 

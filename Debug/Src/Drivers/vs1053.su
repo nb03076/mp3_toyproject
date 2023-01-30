@@ -1,7 +1,7 @@
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h:457:22:LL_SPI_SetBaudRatePrescaler	16	static
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:800:26:LL_GPIO_IsInputPinSet	16	static
-/home/kang/space/ll_mp3_project/Src/gpio.h:77:20:hal_gpio_write	16	static
-/home/kang/space/ll_mp3_project/Src/gpio.h:93:24:hal_gpio_readpin	16	static
+/home/kang/space/ll_mp3_project/Src/gpio.h:79:20:hal_gpio_write	16	static
+/home/kang/space/ll_mp3_project/Src/gpio.h:95:24:hal_gpio_readpin	16	static
 ../Src/Drivers/vs1053.c:50:6:VS1053_Init	16	static
 ../Src/Drivers/vs1053.c:82:6:VS1053_Reset	16	static
 ../Src/Drivers/vs1053.c:93:6:VS1053_SoftReset	8	static

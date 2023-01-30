@@ -6,19 +6,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Src/application/display_app.c \
-../Src/application/input.c \
+../Src/application/input_app.c \
 ../Src/application/mp3_app.c \
 ../Src/application/mp3_player.c 
 
 OBJS += \
 ./Src/application/display_app.o \
-./Src/application/input.o \
+./Src/application/input_app.o \
 ./Src/application/mp3_app.o \
 ./Src/application/mp3_player.o 
 
 C_DEPS += \
 ./Src/application/display_app.d \
-./Src/application/input.d \
+./Src/application/input_app.d \
 ./Src/application/mp3_app.d \
 ./Src/application/mp3_player.d 
 
@@ -30,7 +30,7 @@ Src/application/%.o Src/application/%.su: ../Src/application/%.c Src/application
 clean: clean-Src-2f-application
 
 clean-Src-2f-application:
-	-$(RM) ./Src/application/display_app.d ./Src/application/display_app.o ./Src/application/display_app.su ./Src/application/input.d ./Src/application/input.o ./Src/application/input.su ./Src/application/mp3_app.d ./Src/application/mp3_app.o ./Src/application/mp3_app.su ./Src/application/mp3_player.d ./Src/application/mp3_player.o ./Src/application/mp3_player.su
+	-$(RM) ./Src/application/display_app.d ./Src/application/display_app.o ./Src/application/display_app.su ./Src/application/input_app.d ./Src/application/input_app.o ./Src/application/input_app.su ./Src/application/mp3_app.d ./Src/application/mp3_app.o ./Src/application/mp3_app.su ./Src/application/mp3_player.d ./Src/application/mp3_player.o ./Src/application/mp3_player.su
 
 .PHONY: clean-Src-2f-application
 

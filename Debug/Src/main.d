@@ -73,7 +73,9 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
  ../Src/sdio.h ../Src/adc.h ../Src/cli.h ../Src/delay.h ../Src/tim.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h \
  /home/kang/space/ll_mp3_project/Src/application/mp3_app.h \
- /home/kang/space/ll_mp3_project/Src/application/display_app.h
+ /home/kang/space/ll_mp3_project/Src/application/display_app.h \
+ /home/kang/space/ll_mp3_project/Src/application/input_app.h \
+ /home/kang/space/ll_mp3_project/Src/gpio.h
 /home/kang/space/ll_mp3_project/Src/core/core.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h:
 /home/kang/space/ll_mp3_project/conf/FreeRTOSConfig.h:
@@ -156,3 +158,5 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:
 /home/kang/space/ll_mp3_project/Src/application/mp3_app.h:
 /home/kang/space/ll_mp3_project/Src/application/display_app.h:
+/home/kang/space/ll_mp3_project/Src/application/input_app.h:
+/home/kang/space/ll_mp3_project/Src/gpio.h:

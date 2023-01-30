@@ -6,18 +6,32 @@
 #include "icon.h"
 #include "ds3231.h"
 #include "cli.h"
+#include <stdio.h>
+#include "fatfs.h"
 
 #define RTC_TIMER_PERIOD 1000
 
 static u8g2_t u8g2;
 static ds3231_time_t ds3231_time;
+
+/* RTOS variable */
 static TimerHandle_t rtc_timer;
+static TaskHandle_t display_taskhandle;
+
+/* FATFS variable */
+static FATFS mp3fatfs;
+static FIL mp3file;
+static DIR mp3dir;
+
 
 static void refresh_rtc_timercb (TimerHandle_t xTimer) {
 	ds3231_get_time(&ds3231_time);
+	xTaskNotifyGive(display_taskhandle);
 }
 
 void displayThread(void* param) {
+	display_taskhandle = xTaskGetCurrentTaskHandle();
+
 	u8g2_Setup_ssd1306_128x64_noname_f(&u8g2, U8G2_R0, u8x8_byte_stm32_hw_spi, u8x8_stm32_gpio_and_delay);
 	u8g2_InitDisplay(&u8g2);
 	u8g2_SetPowerSave(&u8g2, 0);
@@ -42,14 +56,21 @@ void displayThread(void* param) {
 
 
 	while(1) {
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		char str1[100];
 	    u8g2_FirstPage(&u8g2);
-	    icon_draw_play(&u8g2, 0, 0);
+	    u8g2_SetFont(&u8g2, u8g2_font_5x8_tf);
+		sprintf(str1, "%d/%d %s %d:%d:%d", ds3231_time.month, ds3231_time.date, ds3231_day_to_string(ds3231_time.day),
+				ds3231_time.hour, ds3231_time.min, ds3231_time.sec);
+		u8g2_DrawStr(&u8g2, 0, 10, str1);
+		u8g2_DrawStr(&u8g2, 0, 40, "Hello");
+		u8g2_SendBuffer(&u8g2);
+
 	    icon_draw_pause(&u8g2, 120, 0);
 
 #if 0
 	    u8g2_SetFont(&u8g2, u8g2_font_6x13B_tf);
 	    u8g2_DrawStr(&u8g2, 1, 14, "hello world!");
 #endif
-		vTaskDelay(1000);
 	}
 }

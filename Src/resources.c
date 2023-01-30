@@ -38,6 +38,13 @@ const GpioPin gpio_vs1053_dcs = {.port = VS1053_DCS_GPIO_PORT, .pin = VS1053_DCS
 const GpioPin gpio_vs1053_rst = {.port = VS1053_RST_GPIO_PORT, .pin = VS1053_RST_PIN};
 const GpioPin gpio_vs1053_dreq = {.port = VS1053_DREQ_GPIO_PORT, .pin = VS1053_DREQ_PIN};
 
+const InputPin input_pins[] = {
+		{.gpio = &gpio_button_left, .key = InputKeyLeft},
+		{.gpio = &gpio_button_right, .key = InputKeyRight},
+		{.gpio = &gpio_button_center, .key = InputKeyCenter},
+		{.gpio = &gpio_button_up, .key = InputKeyUp},
+		{.gpio = &gpio_button_down, .key = InputKeyDown},
+};
 
 void hal_resources_init_early(void) {
 	/* led */
@@ -59,8 +66,8 @@ void hal_resources_init(void) {
 	NVIC_EnableIRQ(EXTI0_IRQn);
 	NVIC_SetPriority(EXTI1_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
 	NVIC_EnableIRQ(EXTI1_IRQn);
-	NVIC_SetPriority(EXTI2_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
-	NVIC_EnableIRQ(EXTI2_IRQn);
+	NVIC_SetPriority(EXTI9_5_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+	NVIC_EnableIRQ(EXTI9_5_IRQn);
 	NVIC_SetPriority(EXTI3_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
 	NVIC_EnableIRQ(EXTI3_IRQn);
 	NVIC_SetPriority(EXTI4_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
@@ -82,8 +89,4 @@ void hal_resources_init(void) {
 	hal_gpio_init(&gpio_vs1053_rst, GpioModeOutputPushPull, GpioPullNo, GpioSpeedFreqLow);
 	hal_gpio_write(&gpio_vs1053_rst, 1);
 	hal_gpio_init(&gpio_vs1053_dreq, GpioModeInput, GpioPullNo, GpioSpeedFreqLow);
-
-//	NVIC_SetPriority(EXTI9_5_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
-//	NVIC_EnableIRQ(EXTI9_5_IRQn);
-
 }

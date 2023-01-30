@@ -38,6 +38,7 @@ void tim_init(TimID id) {
 		tim4_init();
 	//	LL_TIM_EnableCounter(TIM4);
 		LL_TIM_ClearFlag_UPDATE(TIM4);
+		hal_cli_printf("tim4 init");
 		break;
 
 	default:
@@ -113,7 +114,7 @@ static void tim4_init(void)
 	/* tim init period = 20ms */
 	TIM_InitStruct.Prescaler = 180;
 	TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
-	TIM_InitStruct.Autoreload = 10000;
+	TIM_InitStruct.Autoreload = 20000;
 	TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
 	LL_TIM_Init(TIM4, &TIM_InitStruct);
 	LL_TIM_DisableARRPreload(TIM4);
@@ -180,6 +181,9 @@ static void hal_tim_int_call(uint32_t tim) {
 
 
 void TIM4_IRQHandler(void) {
+	if(LL_TIM_IsActiveFlag_UPDATE(TIM4)) {
+		LL_TIM_ClearFlag_UPDATE(TIM4);
+	}
+
 	hal_tim_int_call(4);
-	LL_TIM_ClearFlag_UPDATE(TIM4);
 }

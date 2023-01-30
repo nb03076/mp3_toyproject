@@ -3,6 +3,20 @@
 
 #include "gpio.h"
 
+typedef enum {
+	InputKeyLeft,
+	InputKeyRight,
+	InputKeyCenter,
+	InputKeyUp,
+	InputKeyDown,
+	InputKeyNum,
+}InputKey;
+
+typedef struct {
+	const GpioPin* gpio;
+	const InputKey key;
+}InputPin;
+
 extern const GpioPin gpio_led_green;
 extern const GpioPin gpio_led_red;
 
@@ -41,6 +55,9 @@ extern const GpioPin gpio_vs1053_dcs;
 extern const GpioPin gpio_vs1053_rst;
 extern const GpioPin gpio_vs1053_dreq;
 
+
+extern const InputPin input_pins[];
+
 /* led */
 #define LED_GREEN_GPIO_PORT GPIOG
 #define LED_GREEN_PIN LL_GPIO_PIN_13
@@ -53,7 +70,7 @@ extern const GpioPin gpio_vs1053_dreq;
 #define BUTTON_RIGHT_GPIO_PORT GPIOB
 #define BUTTON_RIGHT_PIN LL_GPIO_PIN_1
 #define BUTTON_CENTER_GPIO_PORT GPIOB
-#define BUTTON_CENTER_PIN LL_GPIO_PIN_2
+#define BUTTON_CENTER_PIN LL_GPIO_PIN_5
 #define BUTTON_UP_GPIO_PORT GPIOB
 #define BUTTON_UP_PIN LL_GPIO_PIN_3
 #define BUTTON_DOWN_GPIO_PORT GPIOB

@@ -18,6 +18,7 @@
 /* application */
 #include "mp3_app.h"
 #include "display_app.h"
+#include "input_app.h"
 
 
 static void initThread(void* param) {
@@ -38,8 +39,9 @@ static void initThread(void* param) {
 
 	hal_resources_init();
 
-	xTaskCreate(mp3Thread, "mp3_app", 512, NULL, 4, NULL);
+	xTaskCreate(mp3Thread, "mp3player", 512, NULL, 3, NULL);
 	xTaskCreate(displayThread, "display", 512, NULL, 3, NULL);
+	xTaskCreate(inputThread, "input", 256, NULL, 3, NULL);
 
 	hal_cli_printf("exit initThread");
 

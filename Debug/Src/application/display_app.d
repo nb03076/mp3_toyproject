@@ -62,7 +62,16 @@ Src/application/display_app.o: ../Src/application/display_app.c \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
  /home/kang/space/ll_mp3_project/Src/cli.h \
  /home/kang/space/ll_mp3_project/Src/uart.h \
- /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h \
+ /home/kang/space/ll_mp3_project/conf/ffconf.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff_gen_drv.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h
 /home/kang/space/ll_mp3_project/Src/core/core.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h:
 /home/kang/space/ll_mp3_project/conf/FreeRTOSConfig.h:
@@ -127,3 +136,12 @@ Src/application/display_app.o: ../Src/application/display_app.c \
 /home/kang/space/ll_mp3_project/Src/cli.h:
 /home/kang/space/ll_mp3_project/Src/uart.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h:
+/home/kang/space/ll_mp3_project/conf/ffconf.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff_gen_drv.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:
