@@ -11,6 +11,7 @@
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:2151:22:LL_TIM_OC_SetCompareCH3	16	static
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:2168:22:LL_TIM_OC_SetCompareCH4	16	static
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:2691:22:LL_TIM_SetClockSource	16	static
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:3182:22:LL_TIM_ClearFlag_UPDATE	16	static
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:3457:22:LL_TIM_EnableIT_UPDATE	16	static
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:3468:22:LL_TIM_DisableIT_UPDATE	16	static
 ../Src/tim.c:16:6:hal_tim_start_it	16	static

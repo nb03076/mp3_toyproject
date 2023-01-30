@@ -37,7 +37,7 @@ void tim_init(TimID id) {
 	case TimId4:
 		tim4_init();
 	//	LL_TIM_EnableCounter(TIM4);
-	//	LL_TIM_ClearFlag_UPDATE(TIM4);
+		LL_TIM_ClearFlag_UPDATE(TIM4);
 		break;
 
 	default:
@@ -110,10 +110,10 @@ static void tim4_init(void)
 	NVIC_SetPriority(TIM4_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
 	NVIC_EnableIRQ(TIM4_IRQn);
 
-	/* tim init */
-	TIM_InitStruct.Prescaler = 180-(uint16_t)LL_TIM_IC_FILTER_FDIV1_N2;
+	/* tim init period = 20ms */
+	TIM_InitStruct.Prescaler = 180;
 	TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
-	TIM_InitStruct.Autoreload = 2500-LL_TIM_IC_FILTER_FDIV1_N2;
+	TIM_InitStruct.Autoreload = 10000;
 	TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
 	LL_TIM_Init(TIM4, &TIM_InitStruct);
 	LL_TIM_DisableARRPreload(TIM4);
@@ -181,4 +181,5 @@ static void hal_tim_int_call(uint32_t tim) {
 
 void TIM4_IRQHandler(void) {
 	hal_tim_int_call(4);
+	LL_TIM_ClearFlag_UPDATE(TIM4);
 }

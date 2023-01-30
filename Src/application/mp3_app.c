@@ -14,15 +14,19 @@
 #define VS1053_VOLUME_PERIOD 1000
 
 static TimerHandle_t vs1053_volume_timer;
+static TaskHandle_t mp3_taskhandle;
 static VolumeLevel prev_volume = VOLUME_OFF;
+QueueHandle_t mp3_queuehandle;
 
 static uint8_t convert_volume_level(VolumeLevel vol);
 
-#if 0
-sd 카드 api 내부에 있는 hal_delay때문에 ISR 내부에서는 사용못하는듯
-static void mp3_feed_timcb(void* context) {
-	if(MP3_is_playing())
-		MP3_Feeder();
+#if 1
+/* sd 카드 api 내부에 있는 hal_delay때문에 ISR 내부에서는 사용못함 */
+static void mp3_feed_notify_timcb(void* context) {
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	LL_TIM_ClearFlag_UPDATE(TIM4);
+	vTaskNotifyGiveFromISR(mp3_taskhandle, &xHigherPriorityTaskWoken);
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 #endif
 
@@ -55,7 +59,6 @@ static void volume_control_timercb(TimerHandle_t xTimer) {
 	prev_volume = potentiometer;
 
 	hal_cli_printf("%d", VS1053_GetDecodeTime());
-
 }
 
 static uint8_t convert_volume_level(VolumeLevel vol) {
@@ -98,6 +101,9 @@ static uint8_t convert_volume_level(VolumeLevel vol) {
 
 
 void mp3Thread(void* param) {
+	mp3_taskhandle = xTaskGetCurrentTaskHandle();
+	//mp3_queuehandle = xQueueCreate()
+
 	MP3_Init();
 	MP3_Play("/mp3/Mercy.mp3");
 
@@ -118,7 +124,13 @@ void mp3Thread(void* param) {
 		}
 	}
 
+	hal_tim_add_int_callback(4, mp3_feed_notify_timcb, NULL);
+	hal_tim_start_it(4);
+
 	while(1) {
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		while(!VS1053_IsBusy()) {
 			MP3_Feeder();
+		}
 	}
 }
