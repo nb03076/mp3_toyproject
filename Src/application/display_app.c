@@ -50,6 +50,6 @@ void displayThread(void* param) {
 	    u8g2_SetFont(&u8g2, u8g2_font_6x13B_tf);
 	    u8g2_DrawStr(&u8g2, 1, 14, "hello world!");
 #endif
-		taskYIELD();
+		vTaskDelay(1000);
 	}
 }

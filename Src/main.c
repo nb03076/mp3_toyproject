@@ -38,7 +38,7 @@ static void initThread(void* param) {
 
 	hal_resources_init();
 
-	xTaskCreate(mp3Thread, "mp3_app", 512, NULL, 3, NULL);
+	xTaskCreate(mp3Thread, "mp3_app", 512, NULL, 4, NULL);
 	xTaskCreate(displayThread, "display", 512, NULL, 3, NULL);
 
 	hal_cli_printf("exit initThread");

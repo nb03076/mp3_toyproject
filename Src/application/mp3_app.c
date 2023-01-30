@@ -8,6 +8,8 @@
 #include "adc.h"
 #include "cli.h"
 #include "tim.h"
+#include "gpio.h"
+#include "resources.h"
 
 #define VS1053_VOLUME_PERIOD 1000
 
@@ -24,6 +26,20 @@ static void mp3_feed_timcb(void* context) {
 }
 #endif
 
+#if 0
+static void vs1053_dreq_exti_callback(void* context) {
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+	if(hal_gpio_read(&gpio_vs1053_dreq)) {
+		if(MP3_is_playing()) {
+			vTaskNotifyGiveIndexedFromISR(mp3task_handle, 0, &xHigherPriorityTaskWoken);
+		}
+	}
+
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+#endif
+
 static void volume_control_timercb(TimerHandle_t xTimer) {
 	uint32_t potentiometer = 0;
 	uint8_t volume = 0xFF;
@@ -37,35 +53,10 @@ static void volume_control_timercb(TimerHandle_t xTimer) {
 	}
 
 	prev_volume = potentiometer;
-	hal_cli_printf("%d", VS1053_GetDecodeTime()/256);
+
+	hal_cli_printf("%d", VS1053_GetDecodeTime());
+
 }
-
-void mp3Thread(void* param) {
-	MP3_Init();
-	MP3_Play("/mp3/Mercy.mp3");
-
-	vs1053_volume_timer = xTimerCreate(
-							"mp3volume",
-							pdMS_TO_TICKS(VS1053_VOLUME_PERIOD),
-							pdTRUE,
-							(void*)0,
-							volume_control_timercb);
-
-	if(!vs1053_volume_timer) {
-		hal_cli_printf("mp3 volume timer create failed");
-		return;
-	} else {
-		if(xTimerStart(vs1053_volume_timer, 0) != pdPASS) {
-			hal_cli_printf("mp3 volume timer start failed");
-			return;
-		}
-	}
-
-	while(1) {
-		MP3_Feeder();
-	}
-}
-
 
 static uint8_t convert_volume_level(VolumeLevel vol) {
 	uint8_t value;
@@ -102,4 +93,32 @@ static uint8_t convert_volume_level(VolumeLevel vol) {
 	}
 
 	return value;
+}
+
+
+
+void mp3Thread(void* param) {
+	MP3_Init();
+	MP3_Play("/mp3/Mercy.mp3");
+
+	vs1053_volume_timer = xTimerCreate(
+							"mp3volume",
+							pdMS_TO_TICKS(VS1053_VOLUME_PERIOD),
+							pdTRUE,
+							(void*)0,
+							volume_control_timercb);
+
+	if(!vs1053_volume_timer) {
+		hal_cli_printf("mp3 volume timer create failed");
+		return;
+	} else {
+		if(xTimerStart(vs1053_volume_timer, 0) != pdPASS) {
+			hal_cli_printf("mp3 volume timer start failed");
+			return;
+		}
+	}
+
+	while(1) {
+			MP3_Feeder();
+	}
 }

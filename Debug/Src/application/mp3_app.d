@@ -1,6 +1,5 @@
 Src/application/mp3_app.o: ../Src/application/mp3_app.c \
- ../Src/application/mp3_app.h \
- /home/kang/space/ll_mp3_project/Src/Drivers/mp3_player.h \
+ ../Src/application/mp3_app.h ../Src/application/mp3_player.h \
  /home/kang/space/ll_mp3_project/Src/Drivers/vs1053.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  /home/kang/space/ll_mp3_project/conf/stm32f4xx_hal_conf.h \
@@ -63,9 +62,16 @@ Src/application/mp3_app.o: ../Src/application/mp3_app.c \
  /home/kang/space/ll_mp3_project/Src/uart.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h \
  /home/kang/space/ll_mp3_project/Src/tim.h \
- /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h \
+ /home/kang/space/ll_mp3_project/Src/gpio.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
+ /home/kang/space/ll_mp3_project/Src/resources.h \
+ /home/kang/space/ll_mp3_project/Src/gpio.h
 ../Src/application/mp3_app.h:
-/home/kang/space/ll_mp3_project/Src/Drivers/mp3_player.h:
+../Src/application/mp3_player.h:
 /home/kang/space/ll_mp3_project/Src/Drivers/vs1053.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 /home/kang/space/ll_mp3_project/conf/stm32f4xx_hal_conf.h:
@@ -129,3 +135,10 @@ Src/application/mp3_app.o: ../Src/application/mp3_app.c \
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
 /home/kang/space/ll_mp3_project/Src/tim.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_tim.h:
+/home/kang/space/ll_mp3_project/Src/gpio.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h:
+/home/kang/space/ll_mp3_project/Src/resources.h:
+/home/kang/space/ll_mp3_project/Src/gpio.h:

@@ -1,3 +1,3 @@
-../Src/application/mp3_app.c:27:13:volume_control_timercb	24	static
-../Src/application/mp3_app.c:43:6:mp3Thread	32	static,ignoring_inline_asm
-../Src/application/mp3_app.c:71:16:convert_volume_level	24	static
+../Src/application/mp3_app.c:43:13:volume_control_timercb	24	static
+../Src/application/mp3_app.c:61:16:convert_volume_level	24	static
+../Src/application/mp3_app.c:100:6:mp3Thread	32	static

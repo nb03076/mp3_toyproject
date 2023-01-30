@@ -7,7 +7,6 @@
 C_SRCS += \
 ../Src/Drivers/ds3231.c \
 ../Src/Drivers/icon.c \
-../Src/Drivers/mp3_player.c \
 ../Src/Drivers/ssd1306_theme.c \
 ../Src/Drivers/u8g2_stm.c \
 ../Src/Drivers/vs1053.c 
@@ -15,7 +14,6 @@ C_SRCS += \
 OBJS += \
 ./Src/Drivers/ds3231.o \
 ./Src/Drivers/icon.o \
-./Src/Drivers/mp3_player.o \
 ./Src/Drivers/ssd1306_theme.o \
 ./Src/Drivers/u8g2_stm.o \
 ./Src/Drivers/vs1053.o 
@@ -23,7 +21,6 @@ OBJS += \
 C_DEPS += \
 ./Src/Drivers/ds3231.d \
 ./Src/Drivers/icon.d \
-./Src/Drivers/mp3_player.d \
 ./Src/Drivers/ssd1306_theme.d \
 ./Src/Drivers/u8g2_stm.d \
 ./Src/Drivers/vs1053.d 
@@ -36,7 +33,7 @@ Src/Drivers/%.o Src/Drivers/%.su: ../Src/Drivers/%.c Src/Drivers/subdir.mk
 clean: clean-Src-2f-Drivers
 
 clean-Src-2f-Drivers:
-	-$(RM) ./Src/Drivers/ds3231.d ./Src/Drivers/ds3231.o ./Src/Drivers/ds3231.su ./Src/Drivers/icon.d ./Src/Drivers/icon.o ./Src/Drivers/icon.su ./Src/Drivers/mp3_player.d ./Src/Drivers/mp3_player.o ./Src/Drivers/mp3_player.su ./Src/Drivers/ssd1306_theme.d ./Src/Drivers/ssd1306_theme.o ./Src/Drivers/ssd1306_theme.su ./Src/Drivers/u8g2_stm.d ./Src/Drivers/u8g2_stm.o ./Src/Drivers/u8g2_stm.su ./Src/Drivers/vs1053.d ./Src/Drivers/vs1053.o ./Src/Drivers/vs1053.su
+	-$(RM) ./Src/Drivers/ds3231.d ./Src/Drivers/ds3231.o ./Src/Drivers/ds3231.su ./Src/Drivers/icon.d ./Src/Drivers/icon.o ./Src/Drivers/icon.su ./Src/Drivers/ssd1306_theme.d ./Src/Drivers/ssd1306_theme.o ./Src/Drivers/ssd1306_theme.su ./Src/Drivers/u8g2_stm.d ./Src/Drivers/u8g2_stm.o ./Src/Drivers/u8g2_stm.su ./Src/Drivers/vs1053.d ./Src/Drivers/vs1053.o ./Src/Drivers/vs1053.su
 
 .PHONY: clean-Src-2f-Drivers
 

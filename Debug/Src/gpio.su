@@ -26,3 +26,4 @@
 ../Src/gpio.c:195:6:EXTI2_IRQHandler	8	static
 ../Src/gpio.c:202:6:EXTI3_IRQHandler	8	static
 ../Src/gpio.c:209:6:EXTI4_IRQHandler	8	static
+../Src/gpio.c:216:6:EXTI9_5_IRQHandler	8	static

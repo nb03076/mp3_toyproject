@@ -51,7 +51,7 @@ void hal_resources_init(void) {
 	/* button */
 	hal_gpio_init(&gpio_button_left, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
 	hal_gpio_init(&gpio_button_right, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
-	hal_gpio_init(&gpio_button_center, GpioModeInterruptFall, GpioPullNo, GpioSpeedFreqLow);
+	hal_gpio_init(&gpio_button_center, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
 	hal_gpio_init(&gpio_button_up, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
 	hal_gpio_init(&gpio_button_down, GpioModeInterruptFall, GpioPullUp, GpioSpeedFreqLow);
 
@@ -76,11 +76,14 @@ void hal_resources_init(void) {
 
 	/* vs1053 */
 	hal_gpio_init(&gpio_vs1053_cs, GpioModeOutputPushPull, GpioPullNo, GpioSpeedFreqLow);
-	hal_gpio_write(&gpio_vs1053_cs, 1);
+	hal_gpio_write(&gpio_vs1053_dcs, 1);
 	hal_gpio_init(&gpio_vs1053_dcs, GpioModeOutputPushPull, GpioPullNo, GpioSpeedFreqLow);
 	hal_gpio_write(&gpio_vs1053_dcs, 1);
 	hal_gpio_init(&gpio_vs1053_rst, GpioModeOutputPushPull, GpioPullNo, GpioSpeedFreqLow);
 	hal_gpio_write(&gpio_vs1053_rst, 1);
 	hal_gpio_init(&gpio_vs1053_dreq, GpioModeInput, GpioPullNo, GpioSpeedFreqLow);
+
+//	NVIC_SetPriority(EXTI9_5_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+//	NVIC_EnableIRQ(EXTI9_5_IRQn);
 
 }

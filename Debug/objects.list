@@ -1,6 +1,5 @@
 "./Src/Drivers/ds3231.o"
 "./Src/Drivers/icon.o"
-"./Src/Drivers/mp3_player.o"
 "./Src/Drivers/ssd1306_theme.o"
 "./Src/Drivers/u8g2_stm.o"
 "./Src/Drivers/vs1053.o"
@@ -166,5 +165,6 @@
 "./Src/application/display_app.o"
 "./Src/application/input.o"
 "./Src/application/mp3_app.o"
+"./Src/application/mp3_player.o"
 "./Src/core/core.o"
 "./Startup/startup_stm32f429zitx.o"

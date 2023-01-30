@@ -213,4 +213,11 @@ void EXTI4_IRQHandler(void) {
     }
 }
 
+void EXTI9_5_IRQHandler(void) {
+    if(LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_8)) {
+        LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_8);
+        hal_gpio_exti_call(8);
+    }
+}
+
 

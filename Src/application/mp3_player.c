@@ -1,6 +1,7 @@
 #include <mp3_player.h>
 #include "fatfs.h"
 #include "stm32f4xx_ll_utils.h"
+#include "resources.h"
 #include <stdbool.h>
 
 #define BUFFER_SIZE 	32
@@ -15,10 +16,6 @@ bool isFileOpen = false;
 
 FATFS fs;
 FIL mp3File;
-
-bool MP3_is_playing(void) {
-	return isPlaying;
-}
 
 /* Initialize VS1053 & Open a file */
 bool MP3_Init()

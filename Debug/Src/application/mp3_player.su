@@ -1,0 +1,6 @@
+../Src/application/mp3_player.c:21:6:MP3_Init	8	static
+../Src/application/mp3_player.c:32:6:MP3_Play	16	static
+../Src/application/mp3_player.c:54:6:MP3_Stop	16	static
+../Src/application/mp3_player.c:74:6:MP3_Pause	4	static
+../Src/application/mp3_player.c:79:6:MP3_Resume	4	static
+../Src/application/mp3_player.c:85:6:MP3_Feeder	8	static

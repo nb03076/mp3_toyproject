@@ -7,7 +7,7 @@
 #include "stm32f4xx_ll_utils.h"
 
 
-#define VS1053_SPI_TIMEOUT 10
+#define VS1053_SPI_TIMEOUT 100
 
 /* Commands */
 #define VS1053_WRITE_CMD	0x02;
@@ -49,15 +49,11 @@ uint8_t endFillByte;
 /* Initialize VS1053 */
 bool VS1053_Init()
 {
-//	uint16_t status = 0;
+	uint16_t status = 0;
 
 	XCS_HIGH;		    /* XCS High */
 	XDCS_HIGH;		    /* XDCS High */
 	VS1053_Reset();     /* Hard Reset */
-
-	/* Read Status to check SPI */
-//	if(!VS1053_SciRead(VS1053_REG_STATUS, &status)) return false;
-//	if(((status >> 4) & 0x0F) != 0x04) return false;
 
 	/* MP3 Mode GPIO configuration */
 	if(!VS1053_SciWrite(VS1053_REG_WRAMADDR, 0xC017)) return false; /* GPIO direction */
@@ -69,13 +65,9 @@ bool VS1053_Init()
 	if(!VS1053_SoftReset()) return false;
 
 	/* x4.0 Clock */
-	if(!VS1053_SciWrite(VS1053_REG_CLOCKF, 0xa000)) return false;
+	if(!VS1053_SciWrite(VS1053_REG_CLOCKF, 0x8000)) return false;
 
-	LL_SPI_SetBaudRatePrescaler(vs1053spidrv->spi, LL_SPI_BAUDRATEPRESCALER_DIV16); /* 90MHz / 16 = about 5.6mhz */
-
-	/* Read Status to check SPI */
-//	if(!VS1053_SciRead(VS1053_REG_STATUS, &status)) return false;
-//	if(((status >> 4) & 0x0F) != 0x04) return false;
+	LL_SPI_SetBaudRatePrescaler(vs1053spidrv->spi, LL_SPI_BAUDRATEPRESCALER_DIV32); /* 90MHz / 16 = about 5.6mhz */
 
 	/* Read endFill Byte */
 	uint16_t regVal;
@@ -212,18 +204,18 @@ bool VS1053_SciRead( uint8_t address, uint16_t *res)
 	if(hal_spi_txrx(vs1053spidrv, &dummy, &rxBuffer[1], 1, VS1053_SPI_TIMEOUT) != true) return false;
 	XCS_HIGH;       /* XCS High */
 
+	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
+
 	*res = rxBuffer[0];     /* Received data */
 	*res <<= 8;				/* MSB */
 	*res |= rxBuffer[1];	/* LSB */
 
-	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
 	return true;
 }
 
 /* SDI Tx */
 bool VS1053_SdiWrite( uint8_t input )
 {
-
 	while (hal_gpio_readpin(&gpio_vs1053_dreq) == 0);	/* Wait DREQ High */
 
 	XDCS_LOW;			/* XDCS Low(SDI) */

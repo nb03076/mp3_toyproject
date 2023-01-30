@@ -17,7 +17,6 @@ void MP3_Pause(void);
 void MP3_Resume(void);
 void MP3_Feeder(void);
 
-bool MP3_is_playing(void);
 
 /* Flags */
 extern bool isPlaying;
