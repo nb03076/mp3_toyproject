@@ -1,5 +1,5 @@
-../Src/application/mp3_player.c:22:6:MP3_IsPlaying	4	static
-../Src/application/mp3_player.c:26:6:Mp3_IsFileOpen	4	static
+../Src/application/mp3_player.c:22:13:MP3_IsPlaying	4	static
+../Src/application/mp3_player.c:26:13:Mp3_IsFileOpen	4	static
 ../Src/application/mp3_player.c:30:6:MP3_SetFile	48	static
 ../Src/application/mp3_player.c:41:6:MP3_Init	8	static
 ../Src/application/mp3_player.c:52:6:MP3_Play	8	static

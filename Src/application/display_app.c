@@ -14,6 +14,7 @@
 #include "fatfs.h"
 
 #define RTC_TIMER_PERIOD 1000
+#define DISPLAY_MP3LIST_ROW 4
 
 /* u8g2 handle */
 static u8g2_t u8g2;
@@ -29,18 +30,82 @@ static DIR mp3dir;
 static InputEvent input_send;
 static InputEvent input_rcv;
 
+/* display layer */
 static DisplayLayer current_layer;
 
+/* rtc time info */
 static ds3231_time_t ds3231_time;
 
-
+/* mp3 file list */
 static char mp3list[16][25];
-static int mp3list_maxnum = 0, mp3list_selnum = 0, mp3list_shownum = 0;
-static int mp3list_prevnum = 0;
+static int mp3list_maxnum = 0, mp3list_selnum = 0;
 
+/* display buffer */
 static char rtc_string[50];
+static char filename_buf[25] = {};
 
 static void display_mp3list(u8g2_t* u8g2_handle);
+static void MP3_SetFileList(DIR *dir);
+static void display_clock(void);
+static void display_mp3select(void);
+
+static void display_clock(void) {
+    u8g2_SetFont(&u8g2, u8g2_font_5x8_tf);
+	u8g2_DrawStr(&u8g2, 0, 10, rtc_string);
+	u8g2_SendBuffer(&u8g2);
+}
+
+static void display_mp3screen(void) {
+	u8g2_ClearBuffer(&u8g2);
+	display_clock();
+    u8g2_SetFont(&u8g2, u8g2_font_5x8_tf);
+	sprintf(filename_buf, "%s", mp3list[mp3list_selnum]);
+	u8g2_DrawStr(&u8g2, 0, 40, filename_buf);
+	u8g2_SendBuffer(&u8g2);
+}
+
+static void display_mp3select(void) {
+	int num = mp3list_selnum % DISPLAY_MP3LIST_ROW;
+
+    u8g2_SetFont(&u8g2, u8g2_font_5x8_tf);
+    u8g2_DrawFrame(&u8g2, 5, 17 + 10 * num, 118, 10);
+	u8g2_SendBuffer(&u8g2);
+}
+
+static void MP3_SetFileList(DIR *dir) {
+	int i = 0;
+
+	FILINFO info;
+
+	while(1) {
+		f_readdir(dir, &info);
+		if(info.fname[0] == '\0') break;
+		snprintf(mp3list[i], 25, info.fname);
+		i++;
+
+		if(i>=15) break;
+	}
+
+	mp3list_maxnum = i - 1;
+}
+
+static void display_mp3list(u8g2_t* u8g2_handle) {
+	int i = mp3list_selnum / 4 * 4;
+	int num = 0;
+
+    u8g2_SetFont(u8g2_handle, u8g2_font_5x8_tf);
+    u8g2_ClearBuffer(u8g2_handle);
+
+	while(mp3list[i] != NULL && num < DISPLAY_MP3LIST_ROW) {
+		u8g2_DrawStr(u8g2_handle, 10, 25 + 10*num, mp3list[i]);
+		i++;
+		num++;
+	}
+
+	display_clock();
+	u8g2_SendBuffer(u8g2_handle);
+}
+
 
 static void btn_center_handler(void) {
 	input_send.type = InputTypePress;
@@ -52,6 +117,7 @@ static void btn_center_handler(void) {
 		current_layer = DisplayLayerMp3;
 		input_send.arg = InputArgSelMp3File;
 		MP3_SetFile(mp3list[mp3list_selnum]);
+		display_mp3screen();
 		xQueueSend(mp3_queue, &input_send, 0);
 		break;
 
@@ -73,12 +139,14 @@ static void btn_up_handler(void) {
 		} else {
 			mp3list_selnum--;
 		}
-
+		display_mp3list(&u8g2);
+		display_mp3select();
 		break;
 
 	case DisplayLayerMp3:
 		current_layer = DisplayLayerList;
 		display_mp3list(&u8g2);
+		display_mp3select();
 		break;
 
 	default:
@@ -94,12 +162,14 @@ static void btn_down_handler(void) {
 		} else {
 			mp3list_selnum++;
 		}
-
+		display_mp3list(&u8g2);
+		display_mp3select();
 		break;
 
 	case DisplayLayerMp3:
 		current_layer = DisplayLayerList;
 		display_mp3list(&u8g2);
+		display_mp3select();
 		break;
 
 	default:
@@ -111,6 +181,10 @@ static void btn_left_handler(void) {
 	switch(current_layer) {
 	case DisplayLayerList:
 		current_layer = DisplayLayerMp3;
+		display_mp3screen();
+		break;
+
+	case DisplayLayerMp3:
 		break;
 
 	default:
@@ -119,45 +193,17 @@ static void btn_left_handler(void) {
 }
 
 static void btn_right_handler(void) {
+	switch(current_layer) {
+	case DisplayLayerList:
+		current_layer = DisplayLayerMp3;
+		display_mp3screen();
+		break;
 
-}
+	case DisplayLayerMp3:
+		break;
 
-
-static void MP3_SetFileList(DIR *dir) {
-	int i = 0;
-
-	FILINFO info;
-
-	while(1) {
-		f_readdir(dir, &info);
-		if(!info.fname[0]) break;
-		snprintf(mp3list[i], 25, info.fname);
-		i++;
-
-		if(i>=16) break;
-	}
-
-	mp3list_maxnum = i;
-}
-
-static void display_mp3list(u8g2_t* u8g2_handle) {
-	int i = mp3list_shownum, num = 0;
-
-	while(mp3list[i] != NULL && num < 4) {
-	    u8g2_SetFont(u8g2_handle, u8g2_font_5x8_tf);
-		u8g2_DrawStr(u8g2_handle, 0, 25 + 10*i, mp3list[i]);
-		u8g2_SendBuffer(u8g2_handle);
-
-		i++;
-		num++;
-	}
-
-	mp3list_prevnum = mp3list_shownum;
-
-	if(mp3list_shownum + i > mp3list_maxnum) {
-		mp3list_shownum = 0;
-	} else {
-		mp3list_shownum += i;
+	default:
+		break;
 	}
 }
 
@@ -205,7 +251,6 @@ void displayThread(void* param) {
 
 	while(1) {
 		xQueueReceive(display_queue, &input_rcv, portMAX_DELAY);
-
 
 		switch(input_rcv.key) {
 		case InputKeyCenter:

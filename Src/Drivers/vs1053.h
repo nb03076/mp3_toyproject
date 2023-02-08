@@ -23,7 +23,7 @@ bool VS1053_AutoResync();
 bool VS1053_SetDecodeTime(uint16_t time);
 uint16_t VS1053_GetDecodeTime(void);
 bool VS1053_SendEndFill(uint16_t num);
-inline bool VS1053_IsBusy();
+bool VS1053_IsBusy();
 bool VS1053_SciWrite(uint8_t address, uint16_t input);
 bool VS1053_SciRead(uint8_t address, uint16_t *res);
 bool VS1053_SdiWrite(uint8_t input);

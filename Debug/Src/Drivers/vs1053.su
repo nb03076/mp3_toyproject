@@ -12,7 +12,7 @@
 ../Src/Drivers/vs1053.c:131:6:VS1053_SetDecodeTime	16	static
 ../Src/Drivers/vs1053.c:138:10:VS1053_GetDecodeTime	16	static
 ../Src/Drivers/vs1053.c:145:6:VS1053_SendEndFill	24	static
-../Src/Drivers/vs1053.c:160:6:VS1053_IsBusy	8	static
+../Src/Drivers/vs1053.c:160:13:VS1053_IsBusy	8	static
 ../Src/Drivers/vs1053.c:167:6:VS1053_SciWrite	24	static
 ../Src/Drivers/vs1053.c:188:6:VS1053_SciRead	32	static
 ../Src/Drivers/vs1053.c:215:6:VS1053_SdiWrite	16	static

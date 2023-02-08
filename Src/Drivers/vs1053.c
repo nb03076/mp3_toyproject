@@ -157,7 +157,7 @@ bool VS1053_SendEndFill(uint16_t num)
 }
 
 /* Check DREQ pin */
-bool VS1053_IsBusy()
+inline bool VS1053_IsBusy()
 {
 	if(hal_gpio_readpin(&gpio_vs1053_dreq) == 1) return false;
 	else return true; // busy

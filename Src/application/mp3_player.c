@@ -19,11 +19,11 @@ bool isFileOpen = false;
 static FATFS fs;
 static FIL mp3File;
 
-bool MP3_IsPlaying(void) {
+inline bool MP3_IsPlaying(void) {
 	return isPlaying;
 }
 
-bool Mp3_IsFileOpen(void) {
+inline bool Mp3_IsFileOpen(void) {
 	return isFileOpen;
 }
 
