@@ -206,6 +206,7 @@ void displayThread(void* param) {
 	while(1) {
 		xQueueReceive(display_queue, &input_rcv, portMAX_DELAY);
 
+
 		switch(input_rcv.key) {
 		case InputKeyCenter:
 			btn_center_handler();
