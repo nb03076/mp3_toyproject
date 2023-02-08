@@ -10,8 +10,11 @@
 #endif
 
 /* Functions */
+bool MP3_SetFile(const char *filename);
+inline bool MP3_IsPlaying(void);
+inline bool Mp3_IsFileOpen(void);
 bool MP3_Init(void);
-bool MP3_Play(const char *filename);
+bool MP3_Play(void);
 void MP3_Stop(void);
 void MP3_Pause(void);
 void MP3_Resume(void);

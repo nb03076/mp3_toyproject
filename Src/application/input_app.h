@@ -6,6 +6,8 @@ extern "C" {
 #endif
 
 #include "gpio.h"
+#include "resources.h"
+#include "display_app.h"
 
 typedef enum {
 	InputTypeNone,
@@ -16,10 +18,16 @@ typedef enum {
 }InputType;
 
 typedef struct {
-	uint32_t sequence;
+	InputKey key;
 	InputType type;
-	GpioPin* pin;
+	uint32_t arg;
 }InputEvent;
+
+typedef enum {
+	InputArgNone,
+	InputArgSelMp3File,
+	InputArgMp3PlayPause,
+}InputArg;
 
 
 void inputThread(void* param);

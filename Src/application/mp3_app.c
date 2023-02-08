@@ -10,23 +10,26 @@
 #include "tim.h"
 #include "gpio.h"
 #include "resources.h"
+#include "input_app.h"
+#include "event.h"
+#include "fatfs.h"
 
 #define VS1053_VOLUME_PERIOD 1000
+#define MP3_QUEUE_TIMEOUT 100
 
 static TimerHandle_t vs1053_volume_timer;
-static TaskHandle_t mp3_taskhandle;
 static VolumeLevel prev_volume = VOLUME_OFF;
-QueueHandle_t mp3_queuehandle;
+static InputEvent input_rcv;
 
 static uint8_t convert_volume_level(VolumeLevel vol);
 
 /* sd 카드 api 내부에 있는 hal_delay때문에 ISR 내부에서는 사용못함 */
-/* 주기를 30ms 정도로 해도 되나 중간에 화이트 노이즈 때문에 20ms로 두었음 */
-/* adafruit 라이브러리는 24ms마다 처리하는걸로 해놨음 */
+/* 주기를 20ms로 두었음 */
 static void mp3_feed_notify_timcb(void* context) {
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	LL_TIM_ClearFlag_UPDATE(TIM4);
-	vTaskNotifyGiveFromISR(mp3_taskhandle, &xHigherPriorityTaskWoken);
+	input_rcv.key = InputKeyNone;
+	xQueueSendFromISR(mp3_queue, &input_rcv, &xHigherPriorityTaskWoken);
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
@@ -35,7 +38,7 @@ static void volume_control_timercb(TimerHandle_t xTimer) {
 	uint8_t volume = 0xFF;
 
 	hal_adc_getdata(1, &potentiometer);
-	potentiometer >>= 9; // 12bit adc resolution. only refer to msb 3bit to change the volume
+	potentiometer >>= 9; // 12bit adc resolution msb 3비트만 참고하여 볼륨 조절
 
 	if(prev_volume != potentiometer) {
 		volume = convert_volume_level(potentiometer);
@@ -85,11 +88,7 @@ static uint8_t convert_volume_level(VolumeLevel vol) {
 
 
 void mp3Thread(void* param) {
-	mp3_taskhandle = xTaskGetCurrentTaskHandle();
-	//mp3_queuehandle = xQueueCreate()
-
 	MP3_Init();
-	MP3_Play("/mp3/Mercy.mp3");
 
 	vs1053_volume_timer = xTimerCreate(
 							"mp3volume",
@@ -108,13 +107,37 @@ void mp3Thread(void* param) {
 		}
 	}
 
+	input_rcv.key = InputKeyNone;
+	input_rcv.type = InputTypeNone;
+	input_rcv.arg = 0;
+
 	hal_tim_add_int_callback(4, mp3_feed_notify_timcb, NULL);
 	hal_tim_start_it(4);
 
 	while(1) {
-		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-		while(!VS1053_IsBusy()) {
-			MP3_Feeder();
+		xQueueReceive(mp3_queue, &input_rcv, MP3_QUEUE_TIMEOUT);
+
+		switch(input_rcv.key) {
+		case InputKeyNone:
+			while(!VS1053_IsBusy() && MP3_IsPlaying()) {
+				MP3_Feeder();
+			}
+			break;
+
+		case InputKeyCenter:
+			if(input_rcv.arg == InputArgSelMp3File) {
+				MP3_Play();
+			} else {
+				if(MP3_IsPlaying() == false) {
+					MP3_Resume();
+				} else {
+					MP3_Pause();
+				}
+			}
+
+			break;
+		default:
+			break;
 		}
 	}
 }

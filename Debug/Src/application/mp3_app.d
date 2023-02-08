@@ -69,7 +69,18 @@ Src/application/mp3_app.o: ../Src/application/mp3_app.c \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
  /home/kang/space/ll_mp3_project/Src/resources.h \
- /home/kang/space/ll_mp3_project/Src/gpio.h
+ /home/kang/space/ll_mp3_project/Src/gpio.h \
+ ../Src/application/input_app.h ../Src/application/display_app.h \
+ ../Src/application/event.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h \
+ /home/kang/space/ll_mp3_project/conf/ffconf.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff_gen_drv.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h
 ../Src/application/mp3_app.h:
 ../Src/application/mp3_player.h:
 /home/kang/space/ll_mp3_project/Src/Drivers/vs1053.h:
@@ -142,3 +153,15 @@ Src/application/mp3_app.o: ../Src/application/mp3_app.c \
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h:
 /home/kang/space/ll_mp3_project/Src/resources.h:
 /home/kang/space/ll_mp3_project/Src/gpio.h:
+../Src/application/input_app.h:
+../Src/application/display_app.h:
+../Src/application/event.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h:
+/home/kang/space/ll_mp3_project/conf/ffconf.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff_gen_drv.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:

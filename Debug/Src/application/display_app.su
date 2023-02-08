@@ -1,2 +1,9 @@
-../Src/application/display_app.c:27:13:refresh_rtc_timercb	24	static
-../Src/application/display_app.c:32:6:displayThread	152	static
+../Src/application/display_app.c:45:13:btn_center_handler	8	static
+../Src/application/display_app.c:68:13:btn_up_handler	8	static
+../Src/application/display_app.c:89:13:btn_down_handler	8	static
+../Src/application/display_app.c:110:13:btn_left_handler	4	static
+../Src/application/display_app.c:121:13:btn_right_handler	4	static
+../Src/application/display_app.c:126:13:MP3_SetFileList	304	static
+../Src/application/display_app.c:143:13:display_mp3list	24	static
+../Src/application/display_app.c:165:13:refresh_rtc_timercb	40	static
+../Src/application/display_app.c:174:6:displayThread	32	static

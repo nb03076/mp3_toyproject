@@ -58,6 +58,7 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  ../Src/clock.h ../Src/resources.h ../Src/gpio.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
@@ -75,7 +76,10 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
  /home/kang/space/ll_mp3_project/Src/application/mp3_app.h \
  /home/kang/space/ll_mp3_project/Src/application/display_app.h \
  /home/kang/space/ll_mp3_project/Src/application/input_app.h \
- /home/kang/space/ll_mp3_project/Src/gpio.h
+ /home/kang/space/ll_mp3_project/Src/gpio.h \
+ /home/kang/space/ll_mp3_project/Src/resources.h \
+ /home/kang/space/ll_mp3_project/Src/application/display_app.h \
+ /home/kang/space/ll_mp3_project/Src/application/event.h
 /home/kang/space/ll_mp3_project/Src/core/core.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/FreeRTOS.h:
 /home/kang/space/ll_mp3_project/conf/FreeRTOSConfig.h:
@@ -136,6 +140,7 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/diskio.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/sd_diskio.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/bsp_driver_sd.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
 ../Src/clock.h:
 ../Src/resources.h:
 ../Src/gpio.h:
@@ -160,3 +165,6 @@ Src/main.o: ../Src/main.c /home/kang/space/ll_mp3_project/Src/core/core.h \
 /home/kang/space/ll_mp3_project/Src/application/display_app.h:
 /home/kang/space/ll_mp3_project/Src/application/input_app.h:
 /home/kang/space/ll_mp3_project/Src/gpio.h:
+/home/kang/space/ll_mp3_project/Src/resources.h:
+/home/kang/space/ll_mp3_project/Src/application/display_app.h:
+/home/kang/space/ll_mp3_project/Src/application/event.h:

@@ -3,19 +3,39 @@
 #include "stm32f4xx_ll_utils.h"
 #include "resources.h"
 #include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 
 #define BUFFER_SIZE 	32
 
-uint8_t mp3Buffer[BUFFER_SIZE];
-uint32_t mp3FileSize;
-uint32_t readBytes;
-uint16_t cnt = 0;
+static uint8_t mp3Buffer[BUFFER_SIZE];
+static uint32_t mp3FileSize;
+static uint32_t readBytes;
+static uint16_t cnt = 0;
 
 bool isPlaying = false;
 bool isFileOpen = false;
 
-FATFS fs;
-FIL mp3File;
+static FATFS fs;
+static FIL mp3File;
+
+bool MP3_IsPlaying(void) {
+	return isPlaying;
+}
+
+bool Mp3_IsFileOpen(void) {
+	return isFileOpen;
+}
+
+bool MP3_SetFile(const char *filename) {
+	char buffer[25];
+	memset(buffer, '\0', 25);
+	f_close(&mp3File);
+	sprintf(buffer, "/mp3/%s", filename);
+	f_open(&mp3File, buffer, FA_READ);
+
+	return true;
+}
 
 /* Initialize VS1053 & Open a file */
 bool MP3_Init()
@@ -29,7 +49,7 @@ bool MP3_Init()
     return true;
 }
 
-bool MP3_Play(const char *filename)
+bool MP3_Play(void)
 {
 	if(isPlaying) MP3_Stop();
 
@@ -38,10 +58,6 @@ bool MP3_Play(const char *filename)
 	if(!VS1053_SetDecodeTime(0)) return false;	/* Set decode time */
 	if(!VS1053_SetVolume( 0x0F, 0x0F )) return false;	/* Small number is louder */
 
-	/* Open file to read */
-	if(f_open(&mp3File, filename, FA_READ) != FR_OK) return false;
-
-	/* Get the file size */
 	mp3FileSize = f_size(&mp3File);
 
 	/* Set flags */
@@ -66,7 +82,6 @@ void MP3_Stop(void)
 		VS1053_SoftReset();
 	}
 
-	f_close(&mp3File);
 	isPlaying = false;			/* Stop flag */
 	isFileOpen = false;			/* Close flag */
 }

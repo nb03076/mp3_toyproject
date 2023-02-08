@@ -3,6 +3,10 @@
 
 #include "gpio.h"
 
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
 typedef enum {
 	InputKeyLeft,
 	InputKeyRight,
@@ -10,6 +14,7 @@ typedef enum {
 	InputKeyUp,
 	InputKeyDown,
 	InputKeyNum,
+	InputKeyNone,
 }InputKey;
 
 typedef struct {
@@ -159,5 +164,9 @@ extern const InputPin input_pins[];
 
 void hal_resources_init_early(void);
 void hal_resources_init(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* RESOURCES_H_ */

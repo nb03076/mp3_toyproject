@@ -63,6 +63,19 @@ Src/application/display_app.o: ../Src/application/display_app.c \
  /home/kang/space/ll_mp3_project/Src/cli.h \
  /home/kang/space/ll_mp3_project/Src/uart.h \
  /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h \
+ ../Src/application/input_app.h \
+ /home/kang/space/ll_mp3_project/Src/gpio.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
+ /home/kang/space/ll_mp3_project/Src/resources.h \
+ /home/kang/space/ll_mp3_project/Src/gpio.h ../Src/application/event.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
+ ../Src/application/mp3_player.h \
+ /home/kang/space/ll_mp3_project/Src/Drivers/vs1053.h \
+ /home/kang/space/ll_mp3_project/Src/spi.h \
+ /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h \
@@ -136,6 +149,20 @@ Src/application/display_app.o: ../Src/application/display_app.c \
 /home/kang/space/ll_mp3_project/Src/cli.h:
 /home/kang/space/ll_mp3_project/Src/uart.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h:
+../Src/application/input_app.h:
+/home/kang/space/ll_mp3_project/Src/gpio.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h:
+/home/kang/space/ll_mp3_project/Src/resources.h:
+/home/kang/space/ll_mp3_project/Src/gpio.h:
+../Src/application/event.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:
+../Src/application/mp3_player.h:
+/home/kang/space/ll_mp3_project/Src/Drivers/vs1053.h:
+/home/kang/space/ll_mp3_project/Src/spi.h:
+/home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/fatfs.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/ff.h:
 /home/kang/space/ll_mp3_project/Src/Middleware/FATFS/integer.h:

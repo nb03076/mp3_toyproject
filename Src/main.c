@@ -1,6 +1,7 @@
 /* middleware */
 #include "core.h"
 #include "fatfs.h"
+#include "queue.h"
 
 /* hal driver */
 #include "clock.h"
@@ -19,6 +20,8 @@
 #include "mp3_app.h"
 #include "display_app.h"
 #include "input_app.h"
+
+#include "event.h"
 
 
 static void initThread(void* param) {
@@ -42,6 +45,9 @@ static void initThread(void* param) {
 	xTaskCreate(mp3Thread, "mp3player", 512, NULL, 3, NULL);
 	xTaskCreate(displayThread, "display", 512, NULL, 3, NULL);
 	xTaskCreate(inputThread, "input", 256, NULL, 3, NULL);
+
+	mp3_queue = xQueueCreate(10, sizeof(InputEvent));
+	display_queue = xQueueCreate(10, sizeof(InputEvent));
 
 	hal_cli_printf("exit initThread");
 

@@ -3,36 +3,54 @@
 #include "task.h"
 #include "resources.h"
 #include "gpio.h"
+#include "event.h"
+#include "queue.h"
 
-static InputEvent button_left_ev;
-static InputEvent button_right_ev;
-static InputEvent button_center_ev;
-static InputEvent button_up_ev;
-static InputEvent button_down_ev;
-
-static void input_event_init(InputEvent* ev, const GpioPin* pin) {
-	ev->sequence = 0;
-	ev->type = InputTypeNone;
-	ev->pin = pin;
-}
+static InputEvent input_ev;
 
 static void input_button_exti_cb(void* context) {
+	BaseType_t xHigherPriorityTaskWoken;
+	int* key = context;
 
+	switch(*key) {
+	case InputKeyLeft:
+		input_ev.key = InputKeyLeft;
+		xQueueSendFromISR(display_queue, &input_ev, &xHigherPriorityTaskWoken);
+		break;
+	case InputKeyRight:
+		input_ev.key = InputKeyRight;
+		xQueueSendFromISR(display_queue, &input_ev, &xHigherPriorityTaskWoken);
+		break;
+	case InputKeyCenter:
+		input_ev.key = InputKeyCenter;
+		xQueueSendFromISR(display_queue, &input_ev, &xHigherPriorityTaskWoken);
+		break;
+	case InputKeyUp:
+		input_ev.key = InputKeyUp;
+		xQueueSendFromISR(display_queue, &input_ev, &xHigherPriorityTaskWoken);
+		break;
+	case InputKeyDown:
+		input_ev.key = InputKeyDown;
+		xQueueSendFromISR(display_queue, &input_ev, &xHigherPriorityTaskWoken);
+		break;
+	default:
+		break;
+	}
+
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 
 void inputThread(void* param) {
-	input_event_init(&button_left_ev, &gpio_button_left);
-	input_event_init(&button_right_ev, &gpio_button_right);
-	input_event_init(&button_center_ev, &gpio_button_center);
-	input_event_init(&button_up_ev, &gpio_button_up);
-	input_event_init(&button_down_ev, &gpio_button_down);
-
 	for(int i = 0; i < InputKeyNum; i++) {
-		hal_gpio_add_exti_callback(input_pins[i].gpio, input_button_exti_cb, NULL);
+		hal_gpio_add_exti_callback(input_pins[i].gpio, input_button_exti_cb, &input_pins[i].key);
 	}
 
-	while(1) {
+	input_ev.key = InputKeyNone;
+	input_ev.type = InputTypeNone;
+	input_ev.arg = 0;
 
+	while(1) {
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 	}
 }

@@ -1,3 +1,2 @@
-../Src/application/input_app.c:13:13:input_event_init	16	static
-../Src/application/input_app.c:19:13:input_button_exti_cb	16	static
-../Src/application/input_app.c:24:6:inputThread	24	static
+../Src/application/input_app.c:11:13:input_button_exti_cb	24	static,ignoring_inline_asm
+../Src/application/input_app.c:44:6:inputThread	24	static

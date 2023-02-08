@@ -57,7 +57,10 @@ Src/application/input_app.o: ../Src/application/input_app.c \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h \
  /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h \
  /home/kang/space/ll_mp3_project/Src/resources.h \
- /home/kang/space/ll_mp3_project/Src/gpio.h
+ /home/kang/space/ll_mp3_project/Src/gpio.h \
+ /home/kang/space/ll_mp3_project/Src/application/display_app.h \
+ ../Src/application/event.h \
+ /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h
 /home/kang/space/ll_mp3_project/Src/application/input_app.h:
 /home/kang/space/ll_mp3_project/Src/gpio.h:
 /home/kang/space/ll_mp3_project/Src/HAL/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:
@@ -117,3 +120,6 @@ Src/application/input_app.o: ../Src/application/input_app.c \
 /home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/task.h:
 /home/kang/space/ll_mp3_project/Src/resources.h:
 /home/kang/space/ll_mp3_project/Src/gpio.h:
+/home/kang/space/ll_mp3_project/Src/application/display_app.h:
+../Src/application/event.h:
+/home/kang/space/ll_mp3_project/Src/Middleware/FreeRTOS-Kernel/include/queue.h:

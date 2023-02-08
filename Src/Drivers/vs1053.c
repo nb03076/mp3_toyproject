@@ -49,8 +49,6 @@ uint8_t endFillByte;
 /* Initialize VS1053 */
 bool VS1053_Init()
 {
-	uint16_t status = 0;
-
 	XCS_HIGH;		    /* XCS High */
 	XDCS_HIGH;		    /* XDCS High */
 	VS1053_Reset();     /* Hard Reset */
