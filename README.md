@@ -50,7 +50,7 @@ EXTI 핸들러에서 큐를 전송합니다.
 
 - 노래 리스트
     
-![KakaoTalk_20230209_184129709](https://user-images.githubusercontent.com/88184255/217788264-c2b655b6-67bd-4827-88db-4f90d81a49ac.jpg)
+<img src="https://user-images.githubusercontent.com/88184255/217788264-c2b655b6-67bd-4827-88db-4f90d81a49ac.jpg" width="700" height="370">
     
 
 ```c
