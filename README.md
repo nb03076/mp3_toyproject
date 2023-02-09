@@ -62,7 +62,7 @@ OK 버튼을 누르면 해당하는 곡을 재생하게끔 구현하였습니다
 
 - MP3 재생화면
     
-    ![KakaoTalk_20230209_184159947.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad3b03de-8b0c-43d5-aea6-2747d8007c21/KakaoTalk_20230209_184159947.jpg)
+<img src="https://user-images.githubusercontent.com/88184255/217788418-bf1a7090-ce0a-41ae-9d5e-f72ffe171afd.jpg)" width="480" height="320">
     
 
 ```c
