@@ -15,11 +15,10 @@
 #include "fatfs.h"
 
 #define VS1053_VOLUME_PERIOD 1000
-#define MP3_QUEUE_TIMEOUT 100
 
 static TimerHandle_t vs1053_volume_timer;
 static VolumeLevel prev_volume = VOLUME_OFF;
-static InputEvent input_rcv;
+static InputEvent input_rcv, input_send;
 
 static uint8_t convert_volume_level(VolumeLevel vol);
 
@@ -115,26 +114,34 @@ void mp3Thread(void* param) {
 	hal_tim_start_it(4);
 
 	while(1) {
-		xQueueReceive(mp3_queue, &input_rcv, MP3_QUEUE_TIMEOUT);
+		xQueueReceive(mp3_queue, &input_rcv, portMAX_DELAY);
 
 		switch(input_rcv.key) {
 		case InputKeyNone:
 			while(!VS1053_IsBusy() && MP3_IsPlaying()) {
 				MP3_Feeder();
 			}
+			if(MP3_IsPlaying() == false) {
+				input_send.key = InputKeyNone;
+				xQueueSend(display_queue, &input_send, 0);
+			}
 			break;
 
 		case InputKeyCenter:
 			if(input_rcv.arg == InputArgSelMp3File) {
+				hal_tim_start_it(4);
 				MP3_Play();
 			} else {
 				if(MP3_IsPlaying() == false) {
+					hal_tim_start_it(4);
 					MP3_Resume();
 				} else {
+					hal_tim_stop_it(4);
 					MP3_Pause();
 				}
 			}
-
+			input_send.key = InputKeyNone;
+			xQueueSend(display_queue, &input_send, 0);
 			break;
 		default:
 			break;

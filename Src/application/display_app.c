@@ -44,10 +44,21 @@ static int mp3list_maxnum = 0, mp3list_selnum = 0;
 static char rtc_string[50];
 static char filename_buf[25] = {};
 
+static void display_mp3playing(void);
 static void display_mp3list(u8g2_t* u8g2_handle);
 static void MP3_SetFileList(DIR *dir);
 static void display_clock(void);
 static void display_mp3select(void);
+
+static void display_mp3playing(void) {
+    u8g2_SetFont(&u8g2, u8g2_font_5x8_tf);
+    if(MP3_IsPlaying()) {
+    	u8g2_DrawStr(&u8g2, 120, 10, "P");
+    } else {
+    	u8g2_DrawStr(&u8g2, 120, 10, "S");
+    }
+	u8g2_SendBuffer(&u8g2);
+}
 
 static void display_clock(void) {
     u8g2_SetFont(&u8g2, u8g2_font_5x8_tf);
@@ -101,8 +112,9 @@ static void display_mp3list(u8g2_t* u8g2_handle) {
 		i++;
 		num++;
 	}
-
+	display_mp3select();
 	display_clock();
+	display_mp3playing();
 	u8g2_SendBuffer(u8g2_handle);
 }
 
@@ -247,8 +259,6 @@ void displayThread(void* param) {
 	MP3_SetFileList(&mp3dir);
 	display_mp3list(&u8g2);
 
-    icon_draw_pause(&u8g2, 120, 0);
-
 	while(1) {
 		xQueueReceive(display_queue, &input_rcv, portMAX_DELAY);
 
@@ -268,7 +278,9 @@ void displayThread(void* param) {
 		case InputKeyRight:
 			btn_right_handler();
 			break;
-
+		case InputKeyNone:
+			display_mp3playing();
+			break;
 		default:
 			break;
 		}
